@@ -1,6 +1,3 @@
-@extends('layouts.app')
-@section('sidebar')
-
 <!-- SIDEBAR -->
 <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
