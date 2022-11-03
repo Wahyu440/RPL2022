@@ -1,4 +1,3 @@
-<!-- SIDEBAR -->
 <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
@@ -125,4 +124,3 @@
             </div>
         </nav>
     </div>
-    <!-- END OF SIDEBAR -->
