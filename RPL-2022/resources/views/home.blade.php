@@ -188,7 +188,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12">
-                        <div class="white-box tranffic-als-inner">
+                        <div class="white-box tranffic-als-inner" style="height:215px;">
                             <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-one"><i class="fa fa-sort-asc"></i> 18% last month</small> MONTH</h3>
                             <div class="stats-row">
                                 <div class="stat-item">
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12">
-                        <div class="white-box tranffic-als-inner res-mg-t-30">
+                        <div class="white-box tranffic-als-inner res-mg-t-30" style="height:215px;">
                             <h3 class="box-title"><small class="pull-right m-t-10 text-danger last-month-sc cl-two"><i class="fa fa-sort-desc"></i> 18% last week</small>WEEK</h3>
                             <div class="stats-row">
                                 <div class="stat-item">
@@ -215,7 +215,7 @@
                             <div id="sparkline9"></div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                         <div class="analytics-rounded mg-b-30 res-mg-t-30">
                             <div class="analytics-rounded-content">
                                 <h5>Percentage distribution</h5>

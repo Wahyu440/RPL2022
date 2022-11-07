@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/areaTransAdmin', function () {
+    return view('areaTrans');
+});
+Route::get('/masterDataArea', function () {
+    return view('dataArea');
+});
+Route::get('/masterDataSifat', function () {
+    return view('dataSifat');
+});
+Route::get('/masterDataCustomer', function () {
+    return view('dataCustomer');
+});
+Route::get('/masterDataBus', function () {
+    return view('dataBus');
+});

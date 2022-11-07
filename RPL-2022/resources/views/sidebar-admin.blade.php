@@ -2,7 +2,7 @@
         <nav id="sidebar" class="">
             <div class="sidebar-header">
                 <a href="index.html"><img class="main-logo" src="{{asset('assets/img/logo/logo.png')}}" alt="" /></a>
-                <strong><img src="{{asset('assets/img/logo/logosn.png')}}" alt="" /></strong>
+                <strong><img src="{{asset('assets/img/logo/logo.png')}}" alt="" /></strong>
             </div>
 			<!-- <div class="nalika-profile">
 				<div class="profile-dtl">
@@ -20,7 +20,8 @@
 								</a>
                         </li>
                         <li>
-                            <a href="mailbox.html" aria-expanded="false"><i class="icon nalika-bar-chart icon-wrap"></i> <span class="mini-click-non">Area Transaction</span></a>
+                            <a href="/areaTransAdmin" aria-expanded="false"><i class="icon nalika-bar-chart icon-wrap"></i> <span class="mini-click-non">Area Transaction</span></a>
+                            <a href="/masterDataArea" aria-expanded="false"><i class="icon nalika-bar-chart icon-wrap"></i> <span class="mini-click-non">Area</span></a>
                         </li>
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Inbox</span></a>
@@ -32,10 +33,10 @@
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="icon nalika-table icon-wrap"></i> <span class="mini-click-non">Master Data</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Area</span></a></li>
-                                <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Sifat</span></a></li>
-                                <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Pengguna</span></a></li>
-                                <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Bus</span></a></li>
+                                <li><a title="Peity Charts" href="/masterDataArea"><span class="mini-sub-pro">Area</span></a></li>
+                                <li><a title="Data Table" href="/masterDataSifat"><span class="mini-sub-pro">Sifat</span></a></li>
+                                <li><a title="Peity Charts" href="/masterDataCustomer"><span class="mini-sub-pro">Pengguna</span></a></li>
+                                <li><a title="Data Table" href="/masterDataBus"><span class="mini-sub-pro">Bus</span></a></li>
                             </ul>
                         </li>
                         <!-- <li>
