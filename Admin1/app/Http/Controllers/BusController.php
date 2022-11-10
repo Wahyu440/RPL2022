@@ -7,6 +7,7 @@ use App\Operator;
 use App\Buses;
 use Session;
 use DB;
+
 class BusController extends Controller
 {
     /**
@@ -114,8 +115,11 @@ class BusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
-        //
+        $bus =  Buses::find($id);
+        $bus->delete();
+        return redirect('/bus')->with('alterDelete', 'Data Terhapus');
     }
 }

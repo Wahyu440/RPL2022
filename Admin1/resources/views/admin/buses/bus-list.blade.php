@@ -48,7 +48,13 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input type="submit" name="submit" value="Edit" class="btn btn-sm btn-info" />
+                            <input type="submit" name="submit" value="" class="btn btn-sm btn-white" />
+                          </form>
+                          <form action="{{ '/bus/deleteBus/' . $data->bus_id }}" method="get">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
                             <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger" />
+                            <input type="submit" name="submit" value="" class="btn btn-sm btn-white" />
                           </form>
                         </td>
                       </tr>

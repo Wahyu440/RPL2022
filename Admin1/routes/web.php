@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Operator Routes
@@ -24,6 +22,7 @@ Route::Resource('operator', 'OperatorController');
 
 //  Bus Route
 Route::Resource('bus','BusController');
+Route::get('/bus/deleteBus/{id}','BusController@destroy');
 
 //  Region Route
 Route::Resource('region','RegionController');
