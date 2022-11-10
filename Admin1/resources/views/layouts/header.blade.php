@@ -44,7 +44,7 @@
      -->
        <div class="logo">
          <a href="#" class="simple-text logo-normal">
-           Online Bus System
+           BUSSLIGHTYEAR
          </a>
        </div>
       @include('layouts.sidebar')
