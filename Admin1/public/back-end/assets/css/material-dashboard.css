@@ -160,7 +160,7 @@ sup {
 }
 
 a {
-  color: #9c27b0;
+  color: #FFCB42;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -564,7 +564,7 @@ sup {
 }
 
 a {
-  color: #9c27b0;
+  color: #FFCB42;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -14679,7 +14679,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   height: 100%;
   content: "";
   display: block;
-  background: #FFFFFF;
+  background: #FFF4CF;
   opacity: .93;
 }
 
@@ -14774,7 +14774,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-color="purple"] li.active>a {
-  background-color: #9c27b0;
+  background-color: #277BC0;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
 
