@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer-copy-right">
-                    <p>Copyright © BussLigthyear.</p>
+                    <p>Copyright © BussLigthyear2022.</p>
                 </div>
             </div>
         </div>
