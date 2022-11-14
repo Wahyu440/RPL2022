@@ -29,3 +29,5 @@ Route::Resource('region','RegionController');
 
 //  Sub Region Route
 Route::Resource('sub-region','Sub_RegionController');
+
+Auth::routes();
