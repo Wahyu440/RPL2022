@@ -4,11 +4,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle" align="center">
-            <i class="glyphicon glyphicon-log-in">Update Bus Info</i></h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <h2 class="modal-title" id="exampleModalLongTitle" align="center">Update Bus</h2>
         </div>
         <div class="modal-body">
 
@@ -20,42 +16,31 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {{-- <label for="operator_name">Operator Name</label> --}}
+                        {{-- <label for="operator_name">Bus Name</label> --}}
                         <input value="{{ $bus->bus_name }}" name="bus_name" id="bus_name" class="form-control" aria-describedby="emailHelp"
                             placeholder="Enter Bus Name" type="text">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                    {{-- <label for="operator_email">Operator Email</label> --}}
+                    {{-- <label for="operator_email">Bus Email</label> --}}
                     <input value="{{$bus->bus_num}}" name="bus_num" id="bus_code" class="form-control" aria-describedby="emailHelp" 
                         placeholder="Enter Bus Number" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="row"> 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="seats">Seats : </label>
-                        <?php 
-                        for ($i=1; $i<=12 ; $i++) { ?>
-                        <input type="checkbox" name="seats[]" value="{{ $i }}" <?php if(in_array("$i", (array)$bus->seats)){echo "checked";}?>>{{ $i }}
-                        <?php } ?>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {{-- <label for="operator_phone">Operator Phone</label> --}}
+                        {{-- <label for="operator_phone">Bus Phone</label> --}}
                         <input value="{{$bus->phone}}" name="phone" id="total_seats" class="form-control" aria-describedby="emailHelp"
                             placeholder="Contact Nuber" type="text">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+                    <label>Total Seats</label>
                         <input value="{{$bus->total_seats}}" name="total_seats"  aria-describedby="emailHelp" type="number">
-                        <label>Total Seats</label>
                     </div>
                 </div>
                 </div>
@@ -77,8 +62,8 @@
         </fieldset>
         </div>
         <div class="modal-footer">
-            <a href="{{ url('/admin/bus') }}" type="button" class="btn btn-sm btn-primary">Go Back</a>
-        <button type="submit" class="btn btn-primary">Update Bus</button>
+            <a href="{{ url('/admin/bus') }}" type="button" class="btn btn-danger">Go Back</a>
+        <button type="submit" class="btn btn-warning">Update Bus</button>
         {{Form::hidden('_method','PUT')}}
         {{-- {{Form::submit('submit', ['class' => 'btn btn-primary'])}} --}}
         {!! Form::close() !!}

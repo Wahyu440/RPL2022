@@ -8,13 +8,13 @@
             <span class="pull-center">
             <a href="#" data-toggle="modal" data-target="#addStation" 
             data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
-            <i class="glyphicon glyphicon-plus"></i> Add New Station</a>
+            <i class="glyphicon glyphicon-plus"></i> Add New Region</a>
             </span>
             <br>
             <br>
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Station List</h4>
+                  <h4 class="card-title ">Region List</h4>
                   <h4 class="card-title pull-right">Today is: {{ date('d-m-Y', time()) }}</h4>
                   <p class="card-category"> These are all the stations for the routes.</p>
                 </div>
@@ -24,7 +24,7 @@
                     <table class="col-md-12">
                       <thead class="text-primary">
                       <th>ID</th>
-                    <th>Station Name</th>
+                    <th>Region Name</th>
                     <th>Last Updated</th>
                     <th>Status</th>
                     <th>Action</th>

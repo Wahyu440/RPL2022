@@ -24,40 +24,40 @@
                         <div class="col-md-6">
                           <div class="form-group">
                                 <!-- <label for="exampleInputEmail1">Bus Name</label> -->
-                                <input name="bus_num" class="form-control" aria-describedby="emailHelp" 
-                                placeholder="Enter Bus Number" type="text">
+                                <input name="plat_no" class="form-control" aria-describedby="emailHelp" 
+                                placeholder="Enter Plat Number" type="text">
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="seats_booked">Seats : </label><br>
-                              <div class="row">
-                                <?php for ($i=1; $i <= 12; $i++) { ?>
-                                  <div class="col-md-3">
-                                    <input type="checkbox" id="seats" name="seats[]" value="{{ $i }}">{{ $i }} <br>
-                                  </div>
-                                <?php  } ?>
-                                <div class="col-md-3">
-                                  <input type="checkbox" id="select-all">
-                                  <label for="select-all">Select All</label>
-                                </div>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
+                      
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input name="phone" class="form-control" aria-describedby="emailHelp"
-                             placeholder="Enter Phone Number" type="text">
+                            <input name="no_mesin" class="form-control" aria-describedby="emailHelp"
+                             placeholder="Enter Machine Number" type="text">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input name="total_seats"  class="form-control" aria-describedby="emailHelp"
                              placeholder="Enter Total Seat" type="number">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="pabrik" class="form-control" aria-describedby="emailHelp"
+                             placeholder="Enter Pabrik" type="text">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <select name="jenis" id="jenis" class="form-control">
+                              <option value="" selected="true" disabled="true">Select Type</option>
+                              <option value="Normal Deck">Normal Deck</option>
+                              <option value="High Decker">High Decker</option>
+                            </select>
                           </div>
                         </div>
                       </div>

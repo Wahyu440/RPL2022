@@ -5,7 +5,7 @@
     <div class="modal-content">
         <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLongTitle" align="center">
-            <i class="glyphicon glyphicon-log-in">Update Station Info</i></h2>
+            <i class="glyphicon glyphicon-log-in">Update Region Info</i></h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -32,7 +32,7 @@
         </div>
         <div class="modal-footer">
             <a href="{{ route('station.index') }}" type="button" class="btn btn-sm btn-primary">Go Back</a>
-        <button type="submit" class="btn btn-primary">Update Station</button>
+        <button type="submit" class="btn btn-primary">Update Region</button>
         {{Form::hidden('_method','PUT')}}
         {!! Form::close() !!}
         </div>

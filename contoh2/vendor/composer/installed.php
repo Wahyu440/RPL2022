@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f3211911288e0c6cc764dabe3067696c77965e3d',
+        'reference' => '213d336b8f1b0baf38745e07c65d910a70f0f737',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -403,12 +403,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f3211911288e0c6cc764dabe3067696c77965e3d',
+            'reference' => '213d336b8f1b0baf38745e07c65d910a70f0f737',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(
@@ -502,12 +502,12 @@
             'dev_requirement' => false,
         ),
         'league/oauth2-server' => array(
-            'pretty_version' => '8.3.5',
-            'version' => '8.3.5.0',
+            'pretty_version' => '8.3.6',
+            'version' => '8.3.6.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/oauth2-server',
             'aliases' => array(),
-            'reference' => '7aeb7c42b463b1a6fe4d084d3145e2fa22436876',
+            'reference' => '28c5441716c10d0c936bd731860dc385d0f6d1a8',
             'dev_requirement' => false,
         ),
         'league/oauth2server' => array(

@@ -27,13 +27,13 @@
 
     <style>
     body {
-    background-image: url('https://thumbs.dreamstime.com/b/dark-space-nebula-bright-stars-nebulae-like-cirrus-clouds-tones-slow-dolly-75426993.jpg');
+    background-image: url('https://th.bing.com/th/id/R.acde9909f3eed72465a7dd2523ad6fae?rik=sZ2yA6uk%2f7Qdmg&riu=http%3a%2f%2fwww.colorhexa.com%2f6250c5.png&ehk=GaLm1hXDDsnbh3wGqwPESBmrDFz3B80ZfJuGC7iabac%3d&risl=&pid=ImgRaw&r=0');
     }
     .card-body{
-    background-image: url('https://www.aimcobd.com/images/bg1.jpg');
+    background-image: url('https://wallpapercave.com/wp/wp4756618.jpg');
     }
     .navbar{
-    background-image: url('https://www.elsetge.cat/myimg/f/1-12083_dark-hd-wallpapers-1080p-dark-wallpaper-1080p-background.jpg');
+    background-image: url('https://wallpapercave.com/wp/wp4756618.jpg');
     }
     </style>
  
