@@ -27,7 +27,7 @@
 
     <style>
     body {
-    background-image: url('https://th.bing.com/th/id/R.acde9909f3eed72465a7dd2523ad6fae?rik=sZ2yA6uk%2f7Qdmg&riu=http%3a%2f%2fwww.colorhexa.com%2f6250c5.png&ehk=GaLm1hXDDsnbh3wGqwPESBmrDFz3B80ZfJuGC7iabac%3d&risl=&pid=ImgRaw&r=0');
+    background-image: url('https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0676/4429/r0_0_solid_2a0066_darkpurple_shop_preview.png');
     }
     .card-body{
     background-image: url('https://wallpapercave.com/wp/wp4756618.jpg');
