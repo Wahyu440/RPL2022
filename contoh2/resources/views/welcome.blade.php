@@ -70,7 +70,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <!-- <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -80,7 +80,7 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
-                </div>
+                </div> -->
             @endif
 
             <div class="content">
@@ -88,7 +88,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="content-panel">
-                                <h1>WayToWay Travels</h1>
+                                <h1 style="color:#4387DE;">BussLightYear</h1>
+                                <h1><a style="color:#D5D812;" href="{{ url('/home') }}">Login</a>
+                                <div class="top-right links">
+                                    <a href="{{ url('/admin') }}">Login Admin</a>
+                                </div>
+                            </h1>
                             </div>
                         </div>
                     </div>

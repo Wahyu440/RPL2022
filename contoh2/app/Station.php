@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Station extends Model
 {
     protected $table = 'stations';
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'jenis_area'];
     protected $primaryKey = 'id';
 
     public function schedule()

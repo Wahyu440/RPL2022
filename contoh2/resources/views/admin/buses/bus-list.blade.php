@@ -56,8 +56,14 @@
                         <td>
                           <a href="#" data-toggle="modal" data-target="#busView{{$bus->bus_id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
                           <i class="glyphicon glyphicon-plus"></i>View</a>
-                  @include('admin.buses.bus-view')
-                          <a href="/admin/bus/{{ $bus->bus_id }}/edit" class="btn btn-sm btn-info">Edit</a>
+
+                        @include('admin.buses.bus-view')
+                        <a href="/admin/bus/{{ $bus->bus_id }}/edit" class="btn btn-sm btn-info">Edit</a>
+                        <!-- <a href="#" data-toggle="modal" data-target="#editBus{{ $bus->id }}" 
+                              data-toggle="tooltip" type="button" class="btn btn-sm btn-info">
+                              <i class="glyphicon glyphicon-eye"></i> Edit
+                            </a> -->
+
                           <form action="{{ url('/admin/bus', ['id' => $bus->bus_id]) }}" method="post">
                             <input class="btn btn-sm btn-danger" type="submit" value="Delete" />
                             <input type="hidden" name="_method" value="delete" />

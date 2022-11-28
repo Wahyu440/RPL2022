@@ -22,11 +22,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <input value="{{$station->status}}" id="status" name="status"  aria-describedby="emailHelp" type="checkbox">
-                        <label for="status">Available</label>
-                    </div>
+                      <div class="form-group">
+                           <select name="jenis_area" id="jenis_area" class="form-control">
+                           <option value="Dalam Kota">Dalam Kota</option>
+                           <option value="Luar Kota">Luar Kota</option>
+                           </select>
+                      </div>
                 </div>
+                
+
             </div>
         </fieldset>
         </div>

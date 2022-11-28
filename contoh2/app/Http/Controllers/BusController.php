@@ -140,13 +140,7 @@ class BusController extends Controller
         $this->validate($request, 
         [
             'bus_name'      =>    'required',
-            'total_seats'   =>    'required',
-            'no_mesin'         =>    'required',
-            'pabrik'       =>  'required',
-            'jenis'       =>  'required',
-            // 'seats_avail'   =>  'nullable',
-            'seats'  =>  'nullable',
-            'plat_no'       =>  'required',
+            'seats_avail'   =>  'nullable',
             'bus_image'     => 'image|nullable|max:2048',
         ]);
         
@@ -168,12 +162,12 @@ class BusController extends Controller
         }
 
         $bus->bus_name = $request->bus_name;
-        $bus->plat_no = $request->plat_no;
-        $bus->no_mesin = $request->no_mesin;
-        $bus->pabrik = $request->pabrik;
-        $bus->jenis = $request->jenis;
-        $bus->total_seats = $request->total_seats;
-        $bus->seats = $request->seats;
+        // $bus->plat_no = $request->plat_no;
+        // $bus->no_mesin = $request->no_mesin;
+        // $bus->pabrik = $request->pabrik;
+        // $bus->jenis = $request->jenis;
+        // $bus->total_seats = $request->total_seats;
+        // $bus->seats = $request->seats;
         // $bus->seats_booked = $request->seats_booked;
 
         if(isset($request->status)){

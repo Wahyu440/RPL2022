@@ -25,8 +25,8 @@
                       <thead class="text-primary">
                       <th>ID</th>
                     <th>Region Name</th>
+                    <th>Region Type</th>
                     <th>Last Updated</th>
-                    <th>Status</th>
                     <th>Action</th>
                     </thead>
                     <tbody>
@@ -36,20 +36,16 @@
                         <td>
                           <a data-toggle="modal" data-target="#exampleModalCenterviewOperator
                             {{$station->id}}"data-toggle="tooltip">{{ $station->name }}</a></td>
+                        <td>{{ $station->jenis_area }}</td>
                         <td>{{ $station->updated_at }}</td>
-                        <td>@if($station->status == 1)
-                          Available
-                        @else
-                          Not Available
-                        @endif
-                        </td>
                         <td>
                           <a href="#" data-toggle="modal" data-target="#stationView{{$station->id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
                           <i class="glyphicon glyphicon-plus"></i>View</a>
-                  @include('admin.stations.station-view')
+                          
+                          @include('admin.stations.station-view')
                           {{-- <a href="/admin/station/{{ $station->id }}/edit" class="btn btn-sm btn-info">Edit</a> --}}
                             <a href="#" data-toggle="modal" data-target="#editStation{{ $station->id }}" 
-                              data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
+                              data-toggle="tooltip" type="button" class="btn btn-sm btn-info">
                               <i class="glyphicon glyphicon-eye"></i> Edit
                             </a>
                             @include('admin.stations.edit-station')

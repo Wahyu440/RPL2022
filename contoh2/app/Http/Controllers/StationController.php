@@ -50,16 +50,20 @@ class StationController extends Controller
         $this->validate($request, [
             'name'  =>  'required',
         ]);
+        $this->validate($request, [
+            'jenis_area'  =>  'required',
+        ]);
 
         $station = new Station;
 
         $station->name = $request->name;
+        $station->jenis_area = $request->jenis_area;
         // $station->schedule_id = $request->schedule_id;
-        if (isset($request->status)) {
-            $station->status = 1;
-        } else {
-            $station->status = 0;
-        }
+        // if (isset($request->status)) {
+        //     $station->status = 1;
+        // } else {
+        //     $station->status = 0;
+        // }
 
         $station->save();
         Session::flash('msg', 'New Station Created Successfully');
@@ -102,16 +106,20 @@ class StationController extends Controller
         $this->validate($request, [
             'name'  =>  'required',
         ]);
+        $this->validate($request, [
+            'jenis_area'  =>  'required',
+        ]);
 
         $station = Station::find($id);
 
         $station->name = $request->name;
+        $station->jenis_area = $request->jenis_area;
         // $station->schedule_id = $request->schedule_id;
-        if (isset($request->status)) {
-            $station->status = 1;
-        } else {
-            $station->status = 0;
-        }
+        // if (isset($request->status)) {
+        //     $station->status = 1;
+        // } else {
+        //     $station->status = 0;
+        // }
 
         $station->save();
         Session::flash('msg', 'Station Updated Successfully');

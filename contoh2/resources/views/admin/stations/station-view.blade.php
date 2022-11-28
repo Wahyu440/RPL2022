@@ -13,11 +13,7 @@
             <div class="card mb-3">
                 <div class="card-body">                                             
                 <h5 class="card-title">Name : {{$station->name}}</h5>
-              <p class="card-text">Status : @if($station->status == 1)
-                Available
-              @else
-                Not Available
-              @endif</p>
+                <h5 class="card-title">Region Type : {{$station->jenis_area}}</h5>
               <hr>
               <p class="card-text"><small class="text-muted">Added on : {{$station->created_at}}</small></p>
               <p class="card-text"><small class="text-muted">Updated on : {{$station->updated_at}}</small></p>

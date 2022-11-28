@@ -19,6 +19,16 @@
                   <input name="name" class="form-control" aria-describedby="emailHelp"
                   placeholder="Enter Station Name" type="text">
                 </div>
+
+                <div class="col-md-6">
+                      <div class="form-group">
+                           <select name="jenis_area" id="jenis_area" class="form-control">
+                           <option value="Dalam Kota">Dalam Kota</option>
+                           <option value="Luar Kota">Luar Kota</option>
+                           </select>
+                      </div>
+                </div>
+
               </div>
               <div class="col-md-6">
                 <div class="form-group">
