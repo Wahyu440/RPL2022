@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('customer.index', ['layout' => 'index']);
+        return view('customer.index', ['layout' => 'index'], ['cek' => 'customer']);
     }
 
     public function enquiry(Request $request)

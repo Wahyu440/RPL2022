@@ -27,7 +27,7 @@
                         <th>Bus name</th>
                         <th>From</th>
                         <th>To</th>
-                        <th>Checkpoints</th>
+                        <!-- <th>Checkpoints</th> -->
                         <th>Depart Date</th>
                         <th>Depart Time</th>
                         <th>Return Date</th>
@@ -49,11 +49,7 @@
                         @endforeach</td>
                         <td>{{ $schedule->pickup_address }}</td>
                         <td>{{ $schedule->dropoff_address }}</td>
-                        <td>[
-                          @foreach ($schedule->stations as $checkpoint)
-                              {{ $checkpoint }} |
-                          @endforeach]
-                        </td>
+                        <!-- <td>{{ $schedule->pickup_address }}</td> -->
                         <td>{{ $schedule->depart_date }}</td>
                         <td>{{ $schedule->depart_time }}</td>
                         <td>{{ $schedule->return_date }}</td>

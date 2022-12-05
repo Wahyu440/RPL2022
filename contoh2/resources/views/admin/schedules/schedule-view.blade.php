@@ -20,10 +20,7 @@
                     <p class="card-text">Return Date : {{$schedule->return_date}}</p>
                     <p class="card-text">Return Time : {{$schedule->return_time}}</p>
                     {{-- {{ $checkpoints = json_decode($schedule->stations) }} --}}
-                    <p class="card-text">Checkpoints : </p>
-                    @foreach ($schedule->stations as $key => $checkpoint)
-                      ({{ $key+1 }}.)&nbsp;  {{ $checkpoint }}
-                    @endforeach
+                    
 
 
                     <p class="card-text">Status : @if($schedule->status == 1)

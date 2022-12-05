@@ -18,16 +18,16 @@
                     <fieldset>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="customer_id">Stations</label>
                                     <div class="row">
                                     @foreach ($stations as $station)
                                         <div class="col-md-4">
-                                            <input type="checkbox" name="stations[]" value="{{ $station->name }}">{{ $station->name }} <br>
+
                                         </div>
                                     @endforeach
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="row">
@@ -91,15 +91,29 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <!-- <label for="exampleInputEmail1">Bus Name</label> -->
-                                        <textarea name="pickup_address"  class="form-control" aria-describedby="emailHelp"
-                                        placeholder="Enter Pickup Address" type="text"></textarea>
+                                        <select name="pickup_address" class="form-control">
+                                        <option value="0" selected="true" disabled="true">Select Pickup Address</option>
+                                        @foreach ($stations as $station)
+                                            <option value="{{$station->name}}">{{$station->name}}</option>
+                                        @endforeach
+                                        </select>
+                                        
+                                        <!-- <textarea name="pickup_address"  class="form-control" aria-describedby="emailHelp"
+                                        placeholder="Enter Pickup Address" type="text"></textarea> -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <!-- <label for="exampleInputPassword1">Seat No</label> -->
-                                        <textarea name="dropoff_address" rows="2" cols="20" class="form-control" 
-                                        placeholder="Enter Dropoff Address" type="text"></textarea>
+                                        <select name="dropoff_address" class="form-control">
+                                        <option value="0" selected="true" disabled="true">Select Dropoff Address</option>
+                                        @foreach ($stations as $station)
+                                            <option value="{{$station->name}}">{{$station->name}}</option>
+                                        @endforeach
+                                        </select>
+
+                                        <!-- <textarea name="dropoff_address" rows="2" cols="20" class="form-control" 
+                                        placeholder="Enter Dropoff Address" type="text"></textarea> -->
                                     </div>
                                 </div>
                             </div>
