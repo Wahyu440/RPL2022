@@ -54,11 +54,21 @@
                             @csrf
                             <div class="form-group">
                                 {{-- <label for="source">Source</label> --}}
-                                <input name="source" id="source" type="text" class="form-control" placeholder="Enter Source Address" required>
+                                <select name="source" id="source" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Departure</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {{-- <label for="destination">Destination</label> --}}
-                                <input name="destination" id="destination" type="text" class="form-control" placeholder="Enter destination Address" required>
+                                <select name="destination" id="destination" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Destination</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="travel_date">Travel Date</label>
@@ -89,11 +99,23 @@
                             @csrf
                             <div class="form-group">
                                 <label for="source">Source</label>
-                                <input name="source" value="{{ $source }}" id="source" type="text" class="form-control" placeholder="Enter Source Address">
+                                
+                                <select name="source" id="source" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Departure</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="destination">Destination</label>
-                                <input name="destination" value="{{ $dest }}" id="destination" type="text" class="form-control" placeholder="Enter destination Address">
+                                
+                                <select name="destination" id="destination" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Destination</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="travel_date">Travel Date</label>

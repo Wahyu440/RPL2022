@@ -20,7 +20,7 @@
             </tr> 
             </thead>
             <tbody>
-            @foreach ($bookings as $key => $booking)
+            @foreach ($booking as $key => $booking)
             <tr>
                 <th scope="row">{{$key+1}}</th>
                 <td>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</td>
