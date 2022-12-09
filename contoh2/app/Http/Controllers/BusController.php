@@ -86,7 +86,7 @@ class BusController extends Controller
         // $bus->seats_booked = $request->seats_booked;
         $bus->total_seats = $request->total_seats;
         $bus->bus_image = $fileNameToStore;
-        // $bus->status = $request->status;
+        $bus->status = $request->status;
 
         if(isset($request->status)){
             $bus->status = 1;

@@ -17,10 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
 
     {{-- Frontend Styles --}}
 
@@ -45,6 +46,7 @@
 
 </head>
 <body>
+
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
@@ -65,13 +67,12 @@
 
     stack('scripts')
 
-    @include('layouts.navbars.fixed-plugin-js')
-
     <div id="app">
         <main class="py-4">
             @yield('content')
         </main>
     </div>
     @yield('scripts')
+
 </body>
 </html>

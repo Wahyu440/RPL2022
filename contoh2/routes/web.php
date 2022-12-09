@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function(){
     Route::Resource('bus', 'BusController');
     // Route BusSchedule
     Route::Resource('bus-schedule', 'BusScheduleController');
+
     // Route::get('/showRegion', ['as'=>'showRegion', 'uses'=>'BusScheduleController@showRegion']);
     // Route::get('/showOperator', ['as'=>'showOperator', 'uses'=>'BusScheduleController@showOperator']);
 
