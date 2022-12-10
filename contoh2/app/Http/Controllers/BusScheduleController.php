@@ -70,6 +70,8 @@ class BusScheduleController extends Controller
                 // 'status'=>'required'
             ]);
 
+            $id = Bus::where(['bus_id' => $data['bus_id']])->first();
+            $sisa = $id->total_seats;
             $schedule = new BusSchedule;
 
             $schedule->bus_id = $data['bus_id'];
@@ -81,6 +83,9 @@ class BusScheduleController extends Controller
             $schedule->dropoff_address = ucfirst($data['dropoff_address']);
             $schedule->stations = $data['pickup_address'];
             $schedule->price = $data['price'];
+
+            $schedule->sisa_kursi = $sisa;
+
             $schedule->created_at = date('Y-m-d H:i:s');
             $schedule->updated_at = date('Y-m-d H:i:s');
             

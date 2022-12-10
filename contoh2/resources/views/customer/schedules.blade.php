@@ -7,19 +7,19 @@
         <table class="table">
             <thead class="thead-light">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Bus Name</th>
-                <th scope="col">From</th>
-                <th scope="col">To</th>
-                <th scope="col">Depart Date</th>
-                <th scope="col">Depart Time</th>
-                <th scope="col">Cost Per Seat</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nama Bus</th>
+                <th scope="col" class="text-center">Penjemputan</th>
+                <th scope="col" class="text-center">Tujuan</th>
+                <th scope="col" class="text-center">Tanggal Keberangkatan</th>
+                <th scope="col" class="text-center">Jam Keberangkatan</th>
+                <th scope="col" class="text-center">Harga per Kursi</th>
+                <th scope="col" class="text-center">Sisa Kursi</th>
+                <!-- <th scope="col">Status</th> -->
+                <th scope="col"></th>
             </tr> 
             </thead>
-            <tbody>
+            <tbody class="text-center">
             @foreach ($schedules as $key => $schedule)
             <tr>
                 <th scope="row">{{$key+1}}</th>
@@ -35,16 +35,7 @@
                 <td>{{$schedule->depart_date}}</td>
                 <td>{{$schedule->depart_time}}</td>
                 <td>{{ $schedule->price }}</td>
-                <td>
-                    @foreach ($buses as $bus)
-                        @if ($bus->bus_id == $schedule->bus_id)
-                            {{ $bus->phone }}
-                        @endif
-                    @endforeach
-                </td>
-                <td>
-                    
-                </td>
+                <td>{{ $schedule->sisa_kursi }}</td>
                 <td>
                     <a href="{{ url('/home/booking/'.$schedule->schedule_id) }}" type="button" class="btn btn-sm btn-primary">
                         <i class="glyphicon glyphicon-plus"></i>Book

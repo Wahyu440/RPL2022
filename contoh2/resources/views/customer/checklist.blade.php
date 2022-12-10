@@ -7,53 +7,33 @@
         <table class="table">
             <thead class="thead-light">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Bus Name</th>
-                <th scope="col">From</th>
-                <th scope="col">To</th>
-                <th scope="col">Seats</th>
-                <th scope="col">Total Cost</th>
-                <th scope="col">Bus Contact</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Pemesan</th>
+                <th scope="col" class="text-center">Nama Bus</th>
+                <th scope="col" class="text-center">Penjemputan</th>
+                <th scope="col" class="text-center">Tujuan</th>
+                <th scope="col" class="text-center">Jumlah Kursi</th>
+                <th scope="col" class="text-center">Total Harga</th>
+                <th scope="col" class="text-center"></th>
             </tr> 
             </thead>
             <tbody>
             @foreach ($booking as $key => $booking)
             <tr>
-                <th scope="row">{{$key+1}}</th>
-                <td>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</td>
-                <td>
+                <th scope="row" class="text-center">{{$key+1}}</th>
+                <td class="text-center">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</td>
+                <td class="text-center">
                 @foreach ($buses as $bus)
                     @if ($bus->bus_id == $booking->bus_id)
                         {{ $bus->bus_name }}
                     @endif
                 @endforeach
                 </td>
-                <td>{{$booking->source}}</td>
-                <td>{{$booking->destination}}</td>
-                <td>[
-                    @foreach($booking->seats_booked as $seat)
-                        {{ $seat }}
-                    @endforeach]
-                </td>
-                <td>{{ $booking->total_price }}</td>
-                <td>
-                    @foreach ($buses as $bus)
-                        @if ($bus->bus_id == $booking->bus_id)
-                            {{ $bus->phone }}
-                        @endif
-                    @endforeach
-                </td>
-                <td>
-                    @if ($booking->status == 1)
-                        Reserved
-                    @else
-                        Booked
-                    @endif
-                </td>
-                <td> 
+                <td class="text-center">{{$booking->source}}</td>
+                <td class="text-center">{{$booking->destination}}</td>
+                <td class="text-center">{{$booking->pesan_kursi}}</td>
+                <td class="text-center">{{ $booking->total_price }}</td>
+                <td class="text-center"> 
                     <div class="row">
                         <div class="col-md-2">
                             <form action="https://uat.esewa.com.np/epay/main" method="POST">
@@ -70,13 +50,16 @@
                             </form>
                         </div>
                         <div class="col-md-2">
-                           <a href="/home/booking/{{ $booking->booking_id }}/edit" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+                           <a href="/home/booking/{{ $booking->booking_id }}/view" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i> Invoice</a>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ url('/home/booking/'.$booking->booking_id.'/delete') }}" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                           <a href="/home/booking/{{ $booking->booking_id }}/download" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-arrow-down"></i> Download</a>
                         </div>
+                        <!-- <div class="col-md-2">
+                            <a href="{{ url('/home/booking/'.$booking->booking_id.'/delete') }}" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                        </div> -->
                     </div>
-                  </td>
+                </td>
             </tr>
             @endforeach
             </tbody>

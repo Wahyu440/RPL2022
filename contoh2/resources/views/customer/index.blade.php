@@ -172,18 +172,13 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label for="customer_id">Seats</label>
-                                  <div class="row">
-                                      <?php
-                                        for ($i=1; $i<=12 ; $i++) { ?>
-                                        <div class="col-md-3">
-                                              <input type="checkbox"  name="seats_booked[]" value="{{ $i }}" <?php 
-                                                if(in_array("$i", (array)$seats)){echo "checked"; ?>
-                                                 disabled="true" 
-                                                 <?php }  ?>
-                                                 >{{ $i }}
-                                        </div>
-                                      <?php } ?>
-                                  </div>
+                                                                  
+                                  <select name="pesan_kursi" id="pesan_kursi" class="form-control">
+                                        <option value="0" selected="true" disabled="true">Jumlah Kursi</option>
+                                        @for ($i=1; $i<=$schedule->sisa_kursi; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -197,13 +192,15 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label for="source">From</label>
-                                  <input type="text" name="source" value="{{ $schedule->pickup_address }}" class="form-control" placeholder="Enter Source Address" required>
+                                  <!-- <input disabled type="text" name="source" value="{{ $schedule->pickup_address }}" class="form-control" placeholder="Enter Source Address" required> -->
+                                  <input readonly name="source" value="{{ $schedule->pickup_address }}" type="text" class="form-control" placeholder="Enter Source Address" required>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label for="source">To</label>
-                                  <input type="text" name="destination" value="{{ $schedule->dropoff_address }}"  class="form-control" placeholder="Enter Destination Address" required>
+                                  <!-- <input disabled type="text" name="destination" value="{{ $schedule->dropoff_address }}"  class="form-control" placeholder="Enter Destination Address" required> -->
+                                  <input readonly name="destination" value="{{ $schedule->dropoff_address }}" type="text" class="form-control" placeholder="Enter Destination Address" required>
                                 </div>
                               </div>
                             </div>

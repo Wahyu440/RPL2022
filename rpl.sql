@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 09, 2022 at 11:38 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: 127.0.0.1
+-- Generation Time: Dec 10, 2022 at 06:03 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -55,11 +55,11 @@ CREATE TABLE `bookings` (
   `booking_id` bigint(20) UNSIGNED NOT NULL,
   `customer_id` bigint(20) NOT NULL,
   `bus_id` bigint(20) NOT NULL,
-  `pid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pid` varchar(191) NOT NULL,
   `schedule_id` bigint(20) NOT NULL,
-  `seats_booked` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`seats_booked`)),
-  `source` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `destination` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesan_kursi` int(11) NOT NULL,
+  `source` varchar(191) NOT NULL,
+  `destination` varchar(191) NOT NULL,
   `total_price` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -70,15 +70,9 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`booking_id`, `customer_id`, `bus_id`, `pid`, `schedule_id`, `seats_booked`, `source`, `destination`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 9, 'IBD9VFau7q', 1, '[\"3\",\"4\"]', 'Yogyakarta', 'Jakarta', 160000, 0, '2022-11-29 00:57:58', '2022-11-29 00:59:15'),
-(2, 1, 9, '2TvszxZfxq', 7, '[\"6\",\"7\"]', 'Yogyakarta', 'Jakarta', 24000, 0, '2022-11-29 01:19:07', '2022-11-29 01:19:07'),
-(3, 1, 7, 'RYJjMkR65F', 2, '[\"3\",\"7\"]', 'Sleman', 'Solo', 14000, 0, '2022-11-29 01:20:03', '2022-11-29 01:20:03'),
-(4, 1, 9, 'v5fvE6vsIB', 7, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\"]', 'Yogyakarta', 'Jakarta', 120000, 0, '2022-11-29 01:27:58', '2022-11-29 01:27:58'),
-(5, 1, 9, '32hr6f6ArF', 1, '[\"9\"]', 'Yogyakarta', 'Jakarta', 80000, 0, '2022-11-29 02:34:07', '2022-11-29 02:34:07'),
-(6, 1, 9, '1qLLegVJcW', 7, '[\"2\",\"6\"]', 'Yogyakarta', 'Sleman', 24000, 0, '2022-11-29 02:34:46', '2022-11-29 02:34:46'),
-(7, 1, 9, 'xQSatW1snL', 1, '[\"6\",\"7\",\"8\"]', 'Yogyakarta', 'Jakarta', 240000, 0, '2022-11-29 03:29:22', '2022-11-29 03:29:22'),
-(8, 1, 7, 'O51T1QpNFH', 2, '[\"3\",\"4\",\"7\"]', 'Sleman', 'Solo', 21000, 0, '2022-11-29 03:36:51', '2022-11-29 03:36:51');
+INSERT INTO `bookings` (`booking_id`, `customer_id`, `bus_id`, `pid`, `schedule_id`, `pesan_kursi`, `source`, `destination`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
+(32, 2, 7, 'c3R9hwUZom', 9, 8, 'Yogyakarta', 'Jakarta', 640000, 0, '2022-12-10 06:30:53', '2022-12-10 06:30:53'),
+(33, 2, 7, 'L1qa2IgQEA', 9, 8, 'Yogyakarta', 'Jakarta', 640000, 0, '2022-12-10 06:31:30', '2022-12-10 06:31:30');
 
 -- --------------------------------------------------------
 
@@ -88,15 +82,15 @@ INSERT INTO `bookings` (`booking_id`, `customer_id`, `bus_id`, `pid`, `schedule_
 
 CREATE TABLE `buses` (
   `bus_id` bigint(20) UNSIGNED NOT NULL,
-  `bus_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plat_no` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_mesin` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bus_name` varchar(191) NOT NULL,
+  `plat_no` varchar(191) NOT NULL,
+  `no_mesin` varchar(191) NOT NULL,
   `seats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`seats`)),
-  `bus_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bus_image` varchar(191) NOT NULL,
   `total_seats` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
-  `pabrik` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pabrik` varchar(50) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -106,8 +100,8 @@ CREATE TABLE `buses` (
 --
 
 INSERT INTO `buses` (`bus_id`, `bus_name`, `plat_no`, `no_mesin`, `seats`, `bus_image`, `total_seats`, `status`, `pabrik`, `jenis`, `created_at`, `updated_at`) VALUES
-(7, 'Raharja', 'AA 2315 BS', 'AS0916', '[[\"3\",\"7\"],[\"3\",\"4\",\"7\"]]', 'image_1669035011.jpg', 24, 0, 'Honda', 'Normal Deck', '2022-11-21 05:50:11', '2022-11-27 12:43:53'),
-(9, 'Eka', 'BS 7623 HJ', 'AS6273', '[\"[[\\\"4\\\"]]\",\"3\",\"4\",[\"6\",\"7\"],[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\"],[\"9\"],[\"2\",\"6\"],[\"6\",\"7\",\"8\"]]', 'image_1669577140.jpg', 32, 1, 'Mitsubishi', 'Normal Deck', '2022-11-27 12:25:40', '2022-11-27 12:25:40'),
+(7, 'Raharja', 'AA 2315 BS', 'AS0916', NULL, 'image_1669035011.jpg', 24, 0, 'Honda', 'Normal Deck', '2022-11-21 05:50:11', '2022-11-27 12:43:53'),
+(9, 'Eka', 'BS 7623 HJ', 'AS6273', NULL, 'image_1669577140.jpg', 32, 1, 'Mitsubishi', 'Normal Deck', '2022-11-27 12:25:40', '2022-11-27 12:25:40'),
 (10, 'Dodo', 'H 6278 YZ', 'BU7611', NULL, 'Screenshot (4)_1670312171.png', 24, 1, 'Suzuki', 'Normal Deck', '2022-12-06 00:36:12', '2022-12-06 00:36:12');
 
 -- --------------------------------------------------------
@@ -123,10 +117,11 @@ CREATE TABLE `bus_schedules` (
   `return_date` date NOT NULL,
   `depart_time` time NOT NULL,
   `return_time` time NOT NULL,
-  `pickup_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dropoff_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pickup_address` varchar(191) NOT NULL,
+  `dropoff_address` varchar(191) NOT NULL,
   `stations` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`stations`)),
-  `price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(191) NOT NULL,
+  `sisa_kursi` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -136,11 +131,8 @@ CREATE TABLE `bus_schedules` (
 -- Dumping data for table `bus_schedules`
 --
 
-INSERT INTO `bus_schedules` (`schedule_id`, `bus_id`, `depart_date`, `return_date`, `depart_time`, `return_time`, `pickup_address`, `dropoff_address`, `stations`, `price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 9, '2022-11-08', '2022-11-09', '03:00:00', '01:00:00', 'Yogyakarta', 'Jakarta', '[\"Yogyakarta\"]', '80000', 0, '2022-11-27 13:30:54', '2022-11-27 13:30:54'),
-(2, 7, '2022-11-14', '2022-11-25', '01:00:00', '06:09:00', 'Sleman', 'Solo', '\"5\"', '7000', 1, '2022-11-28 23:51:56', '2022-11-28 23:51:56'),
-(4, 7, '2022-11-15', '2022-11-16', '22:00:00', '11:00:00', 'Sleman', 'Solo', '\"sleman\"', '12', 0, '2022-11-29 00:56:35', '2022-11-29 00:56:35'),
-(7, 9, '2022-11-30', '2022-12-01', '10:00:00', '15:00:00', 'Yogyakarta', 'Jakarta', '\"Yogyakarta\"', '12000', 0, '2022-11-29 01:16:51', '2022-11-29 01:16:51');
+INSERT INTO `bus_schedules` (`schedule_id`, `bus_id`, `depart_date`, `return_date`, `depart_time`, `return_time`, `pickup_address`, `dropoff_address`, `stations`, `price`, `sisa_kursi`, `status`, `created_at`, `updated_at`) VALUES
+(9, 7, '2022-12-17', '2022-12-24', '19:00:00', '19:00:00', 'Yogyakarta', 'Jakarta', '\"Yogyakarta\"', '80000', 8, 0, '2022-12-10 06:30:41', '2022-12-10 06:31:30');
 
 -- --------------------------------------------------------
 
@@ -150,10 +142,10 @@ INSERT INTO `bus_schedules` (`schedule_id`, `bus_id`, `depart_date`, `return_dat
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -165,7 +157,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -195,11 +187,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `oauth_access_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `client_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) DEFAULT NULL,
+  `scopes` text DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -213,10 +205,10 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 CREATE TABLE `oauth_auth_codes` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `client_id` bigint(20) UNSIGNED NOT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -230,10 +222,10 @@ CREATE TABLE `oauth_auth_codes` (
 CREATE TABLE `oauth_clients` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `secret` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `provider` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `secret` varchar(100) DEFAULT NULL,
+  `provider` varchar(191) DEFAULT NULL,
+  `redirect` text NOT NULL,
   `personal_access_client` tinyint(1) NOT NULL,
   `password_client` tinyint(1) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
@@ -261,8 +253,8 @@ CREATE TABLE `oauth_personal_access_clients` (
 --
 
 CREATE TABLE `oauth_refresh_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
+  `access_token_id` varchar(100) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -274,8 +266,8 @@ CREATE TABLE `oauth_refresh_tokens` (
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `token` varchar(191) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -287,8 +279,8 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `stations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_area` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `jenis_area` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -310,14 +302,14 @@ INSERT INTO `stations` (`id`, `name`, `jenis_area`, `created_at`, `updated_at`) 
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `fname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fname` varchar(191) NOT NULL,
+  `lname` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) NOT NULL,
+  `phone` varchar(191) NOT NULL,
+  `address` varchar(191) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -327,7 +319,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'wai', 'siwai', 'siwai@gmail.com', NULL, '$2y$10$.f6PQPsfHrjQASep1ZgFjuBIlnycJjmmfQ1dbCC5gFzQHoSD.wYe2', '08262874029', 'slemannnnnnnnnnnnnnnnn', NULL, '2022-11-15 02:51:37', '2022-11-15 02:51:37');
+(1, 'wai', 'siwai', 'siwai@gmail.com', NULL, '$2y$10$.f6PQPsfHrjQASep1ZgFjuBIlnycJjmmfQ1dbCC5gFzQHoSD.wYe2', '08262874029', 'slemannnnnnnnnnnnnnnnn', NULL, '2022-11-15 02:51:37', '2022-11-15 02:51:37'),
+(2, 'redrum', 'murder', 'redrum@gmail.com', NULL, '$2y$10$m0VKNMTm/IChm211Kr264eHMd/t.IR5HhV7rp.pEfJN6sY3BeOwBm', '081226769729', 'babarsaribabarsaribabarsaribabarsaribabarsari', NULL, '2022-12-09 04:50:22', '2022-12-09 04:50:22');
 
 --
 -- Indexes for dumped tables
@@ -437,7 +430,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `booking_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `buses`
@@ -449,7 +442,7 @@ ALTER TABLE `buses`
 -- AUTO_INCREMENT for table `bus_schedules`
 --
 ALTER TABLE `bus_schedules`
-  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -485,7 +478,7 @@ ALTER TABLE `stations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

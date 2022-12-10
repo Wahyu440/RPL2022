@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     public function showall(Request $request)
     {
-        $schedules = DB::table('bus_schedules')->paginate(10);
+        $schedules = DB::table('bus_schedules')->where('sisa_kursi', '>', 0)->paginate(10);
         $buses = Bus::get();
         return view('customer.index', ['schedules' => $schedules, 'layout' => 'allSchedules', 'buses' => $buses]);
     }

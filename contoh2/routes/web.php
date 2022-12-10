@@ -33,7 +33,8 @@ Route::prefix('home')->group(function(){
     Route::get('/booking/{booking_id}/edit', 'BookingController@edit')->name('booking.edit');
     Route::post('/booking/{booking_id}/update', 'BookingController@update')->name('booking.update');
     Route::get('/booking/{booking_id}/delete', 'BookingController@destroy')->name('booking.delete');
-
+    Route::get('/booking/{booking_id}/view', 'BookingController@viewinvoice');
+    Route::get('/booking/{booking_id}/download', 'BookingController@downloadinvoice');
 
     Route::get('booking/success/{booking_id}', 'BookingController@success')->name('success');
     Route::get('booking/failed/{booking_id}', 'BookingController@failure')->name('failure');
