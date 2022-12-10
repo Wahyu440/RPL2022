@@ -10,7 +10,10 @@
 
     <style>
       body {
-      background-image: url('https://thumbs.dreamstime.com/b/dark-space-nebula-bright-stars-nebulae-like-cirrus-clouds-tones-slow-dolly-75426993.jpg');
+      background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80');
+      background-size: 100% 100%;
+      height: 100pc;
+      background-repeat: no-repeat;
     }
     .card-body{
       background-image: url('https://www.aimcobd.com/images/bg1.jpg');

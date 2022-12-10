@@ -10,7 +10,7 @@ use App\Station;
 use DB;
 use Auth;
 
-class DashboardController extends Controller
+class LandingPageController extends Controller
 {
 
     /**

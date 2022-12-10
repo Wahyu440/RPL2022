@@ -36,7 +36,11 @@
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/24/Solid_purple.svg');
     }
     .navbar{
-    background-image: url('https://wallpapercave.com/wp/wp4756618.jpg');
+    background-image: url('https://i.postimg.cc/Gm8nPjrc/background1crop.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 80px;
+    width: 1800px;
     }
     </style>
  

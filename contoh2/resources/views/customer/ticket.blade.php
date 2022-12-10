@@ -1,7 +1,7 @@
-<div class="card mb-3">
-  <img style="object-fit: scale-down; background-color:powderblue;" height="300px" width="100%" src="https://cdn.wallpapersafari.com/3/31/HvTZ3P.jpg">
+<div class="card mb-3" >
+<img src="https://img5.goodfon.com/wallpaper/nbig/6/6a/temsa-maraton-coach-bus.jpg" style="background-size: 100% 100%;" height="700px" width="400px" class="card-img-top">
   <div class="card-body">                                             
-  <h5 class="card-title">WayToWay Travels</h5>
+  <h5 class="card-title">Way To Way Travels</h5>
   <div class="row">
     <div class="col-md-6">
       <p class="card-text">Customer Name : {{ Auth::user()->fname }} {{ Auth::user()->lname }}</p>
