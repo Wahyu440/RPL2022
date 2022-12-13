@@ -65,7 +65,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <input name="status" id="status" aria-describedby="emailHelp" type="checkbox">
-                            <label for="status">Available</label>
+                            <label for="status">Institusi</label>
                           </div>
                         </div>
                         <div class="col-md-6">

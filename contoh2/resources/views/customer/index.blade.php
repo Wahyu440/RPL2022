@@ -78,6 +78,7 @@
                                 <input name="travel_date" id="travel_date" type="date" class="form-control" placeholder="Enter Travel Date" required>
                             </div>
                             <input type="submit" class="btn btn-info" value="Search"><strong>&nbsp; Or, &nbsp; </strong><a class="btn btn-primary a-btn-slide-text" href="{{ route('schedules.all') }}">Show All Schedules</a>
+                            <a class="btn btn-warning a-btn-slide-text pull-right" href="{{ route('institusi') }}">Institusi</a>
                           </form>
                     </div>
                 </div>
@@ -99,6 +100,52 @@
                       <div class="card-body">
                           <h5 class="card-title">Search For Another Bus</h5>
                           <form action="{{ url('/home/enquiry')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="source">Source</label>
+                                
+                                <select name="source" id="source" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Departure</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                
+                                <select name="destination" id="destination" class="form-control" required>
+                                        <option value="" selected="true" disabled="true">Select Destination</option>
+                                        @foreach ($stations as $list)
+                                            <option value="{{$list->name}}">{{$list->name}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="travel_date">Travel Date</label>
+                                <input name="travel_date" value="{{ $date }}" id="travel_date" type="date" class="form-control" placeholder="Enter Travel Date">
+                            </div>
+                            <input type="submit" class="btn btn-info" value="Search">
+                          </form>
+                      </div>
+                    </div>
+              </section>
+          </div>
+      </div>
+
+      @elseif ($layout == 'institusi')
+      <div class="container-fluid mt-2">
+          <div class="row">
+              <section class="col-md-7">
+                  @include('customer.schedules')
+                  {{-- {{ $schedules->links() }} --}}
+              </section>
+              <section class="col-md-5">
+                  <div class="card mb-3">
+                      <img src="https://www.elsetge.cat/myimg/f/0-7004_blog-post-image-silver-glitter-background-hd.jpg" class="card-img-top">
+                      <div class="card-body">
+                          <h5 class="card-title">Search For Another Bus</h5>
+                          <form action="{{ url('/home/institusi')}}" method="get" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="source">Source</label>
@@ -201,6 +248,88 @@
                                   <label for="source">To</label>
                                   <!-- <input disabled type="text" name="destination" value="{{ $schedule->dropoff_address }}"  class="form-control" placeholder="Enter Destination Address" required> -->
                                   <input readonly name="destination" value="{{ $schedule->dropoff_address }}" type="text" class="form-control" placeholder="Enter Destination Address" required>
+                                </div>
+                              </div>
+                            </div>
+                            <input type="submit" class="btn btn-info" value="Confirm"><strong>
+                          </form>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </div>
+      </div>
+
+      @elseif ($layout == 'addBookingInstitusi')
+      <div class="container-fluid mt-2">
+        <div class="container-fluid mt-2">
+            <div class="row justify-content-center">
+                <section class="col-md-8">
+                  <div class="card">
+                    <div class="card-header"><h3>Book Your Seat</h3></div>
+                    <div class="card-body">
+                        <form action="{{ url('/home/booking/institusi/'.$schedule->schedule_id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="customer_id">Customer Name </label>
+                                  <input disabled name="customer_id" value="{{ ucfirst(Auth::user()->fname) }} {{ ucfirst(Auth::user()->lname) }}" type="text" class="form-control" placeholder="Enter Source Address" required>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="bus_id">Bus Name</label>
+                                  <input disabled name="bus_id" value="{{ $bus->bus_name }}" type="text" class="form-control" placeholder="Enter Bus Name" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="customer_id">Seats</label>
+                                  <input disabled name="pesan_kursi" value="{{ $bus->total_seats }}" type="number" class="form-control" required>                                
+                                  <!-- <select name="pesan_kursi" id="pesan_kursi" class="form-control">
+                                        <option value="0" selected="true" disabled="true">Jumlah Kursi</option>
+                                        @for ($i=1; $i<=$schedule->sisa_kursi; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select> -->
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="bus_id">Price per Seat</label>
+                                  <input readonly name="price" value="{{ $schedule->price }}" type="text" class="form-control" placeholder="Enter Bus Name" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="source">From</label>
+                                  <!-- <input disabled type="text" name="source" value="{{ $schedule->pickup_address }}" class="form-control" placeholder="Enter Source Address" required> -->
+                                  <input readonly name="source" value="{{ $schedule->pickup_address }}" type="text" class="form-control" placeholder="Enter Source Address" required>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="source">To</label>
+                                  <!-- <input disabled type="text" name="destination" value="{{ $schedule->dropoff_address }}"  class="form-control" placeholder="Enter Destination Address" required> -->
+                                  <input readonly name="destination" value="{{ $schedule->dropoff_address }}" type="text" class="form-control" placeholder="Enter Destination Address" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label for="jumlahBus">Jumlah Bus</label>
+                                  <select name="jumlah_bus" id="jumlah_bus" class="form-control">
+                                        <option value="0" selected="true" disabled="true">Jumlah Bus</option>
+                                        @for ($i=1; $i<=5; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
                                 </div>
                               </div>
                             </div>

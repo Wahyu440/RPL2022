@@ -46,9 +46,9 @@
                         <td>{{ $bus->total_seats }}</td>
                         <td>{{ $bus->updated_at }}</td>
                         <td>@if($bus->status == 1)
-                          Available
+                          Pribadi
                         @else
-                          Not Available
+                          Institusi
                         @endif
                         </td>
                         <td>{{ $bus->pabrik }}</td>

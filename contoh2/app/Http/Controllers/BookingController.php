@@ -51,6 +51,21 @@ class BookingController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createInstitusi($schedule_id)
+    {
+        $schedule = DB::table('bus_schedules')->where('schedule_id', '=', $schedule_id)->first();
+        $bus = DB::table('buses')->where('bus_id', '=', $schedule->bus_id)->first();
+
+        $seats = json_decode($bus->seats);
+        
+        return view('customer.index', ['schedule' => $schedule, 'layout' => 'addBookingInstitusi', 'seats' => $seats, 'bus' => $bus]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,7 +94,8 @@ class BookingController extends Controller
                 $bookings->bus_id    =   $schedule->bus_id;
                 $bookings->pid   = $pid;
                 $bookings->schedule_id    =   $schedule->schedule_id;
-                $bookings->pesan_kursi = $request->pesan_kursi;
+                $bookings->jumlah_bus = 1;
+                $bookings->pesan_kursi = $request->pesan_kursi * $bookings->jumlah_bus;
                 $bookings->total_price = (int)$schedule->price * $bookings->pesan_kursi;
                 $bookings->source = $schedule->pickup_address;
                 $bookings->destination = $schedule->dropoff_address;
@@ -97,6 +113,80 @@ class BookingController extends Controller
                 // }
                 $schedules = BusSchedule::find($schedule_id);
                 $schedules->sisa_kursi = $schedule->sisa_kursi - $bookings->pesan_kursi;
+                $schedules->save();
+                // DB::table('buses')->where('bus_id', $schedule->bus_id)->update([
+                //     'seats' => $booked
+                //     ]);
+                    
+                $bookings->save();
+                
+                // dd($bus->seats);
+                $user = Auth::user()->id;
+                $booking = Booking::where(['customer_id' => $user])->get();
+                $buses = Bus::all();
+
+                Session::flash('success', 'Your Seat Booked Successsfully');
+
+                return view('customer.index', ['layout' => 'checklist', 'buses' => $buses, 'bus'    =>$bus, 'bookings' => $bookings, 'schedule' => $schedule, 'booking' => $booking]);
+        //     }else{
+        //         Session::flash('success', 'Please Check Your Source Address');
+        //     return redirect()->back();
+        //     }
+        // }
+        // else{
+        //     Session::flash('error', 'Please Check Your Destination Address');
+        //     return redirect()->back();
+        // }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeInstitusi(Request $request, $schedule_id)
+    {
+        $bookings = new Booking;
+
+        $this->validate($request, [
+            // 'pesan_kursi'  =>  'required',
+            // 'source'        =>  'required',
+            // 'destination'   =>  'required',
+            // 'status'        =>  'required',
+        ]);
+
+        $schedule = DB::table('bus_schedules')->where('schedule_id', '=', $schedule_id)->first();
+        $bus = DB::table('buses')->where('bus_id', '=', $schedule->bus_id)->first();
+
+        $pid = $this->getPid();
+        // if(in_array(ucfirst("$request->destination"), (array)$schedule->stations)){
+
+        //     if(in_array(ucfirst("$request->source"), (array)$schedule->stations)){
+        //     // if(count(array_intersect(array(ucfirst($request->source), ucfirst($request->destination)), (array)$schedule->stations)) == 2){
+                $bookings->customer_id = Auth::user()->id;
+                $bookings->bus_id    =   $schedule->bus_id;
+                $bookings->pid   = $pid;
+                $bookings->schedule_id    =   $schedule->schedule_id;
+                $bookings->jumlah_bus = $request->jumlah_bus;
+                $bookings->pesan_kursi = $bus->total_seats * $bookings->jumlah_bus;
+                $bookings->total_price = (int)$schedule->price * $bookings->pesan_kursi;
+                $bookings->source = $schedule->pickup_address;
+                $bookings->destination = $schedule->dropoff_address;
+        
+                if(isset($request->status)){
+                    $bookings->status = 1;
+                }else{
+                    $bookings->status = 0;
+                }
+                
+                // $booked = json_decode($bus->seats, true);
+                
+                // foreach ($request->seats_booked as $book) {
+                // $booked[] = $request->seats_booked;
+                // }
+                $schedules = BusSchedule::find($schedule_id);
+                $schedules->sisa_kursi = 0;
                 $schedules->save();
                 // DB::table('buses')->where('bus_id', $schedule->bus_id)->update([
                 //     'seats' => $booked

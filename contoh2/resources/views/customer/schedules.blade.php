@@ -37,17 +37,22 @@
                 <td>{{ $schedule->price }}</td>
                 <td>{{ $schedule->sisa_kursi }}</td>
                 <td>
+                    @if ($schedule->status == 0)
                     <a href="{{ url('/home/booking/'.$schedule->schedule_id) }}" type="button" class="btn btn-sm btn-primary">
                         <i class="glyphicon glyphicon-plus"></i>Book
                     </a>
-                    
+                    @elseif ($schedule->status == 1)
+                    <a href="{{ url('/home/booking/institusi/'.$schedule->schedule_id) }}" type="button" class="btn btn-sm btn-primary">
+                        <i class="glyphicon glyphicon-plus"></i>Book
+                    </a>
+                    @endif                    
                 </td>
             </tr>
             @endforeach
             </tbody>
         </table>
-        <a href="{{ url('/home')}}" class="btn btn-primary a-btn-slide-text">
-            <span aria-hidden="true">Manual Search</span>
+        <a href="{{ url('/home')}}" class="btn btn-warning a-btn-slide-text">
+            <span aria-hidden="true">Back</span>
         </a> 
     </div>
 </div>

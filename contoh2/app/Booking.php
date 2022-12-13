@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $table = 'bookings';
-    protected $fillable = ['customer_id', 'bus_id', 'pid', 'schedule_id', 'pesan_kursi', 'total_price', 'status', 'source', 'destination'];
+    protected $fillable = ['customer_id', 'bus_id', 'pid', 'schedule_id', 'pesan_kursi', 'total_price', 'status', 'source', 'destination','jumlah_bus'];
     protected $primaryKey = 'booking_id';
 
     // protected $casts = [

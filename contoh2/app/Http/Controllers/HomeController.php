@@ -47,6 +47,8 @@ class HomeController extends Controller
             ->Where('depart_date', '=', $date)
             // ->orWhere('source', 'like', '%' . Input::get('source') . '%')
             ->Where('dropoff_address', $dest)
+            ->Where('status', '=','0')
+            ->where('sisa_kursi', '>', 0)
             ->paginate(10);
 
         return view('customer.index', compact('stations'), ['schedules' => $schedules, 'layout' => 'schedules', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
@@ -54,8 +56,28 @@ class HomeController extends Controller
 
     public function showall(Request $request)
     {
-        $schedules = DB::table('bus_schedules')->where('sisa_kursi', '>', 0)->paginate(10);
+        $schedules = DB::table('bus_schedules')->where('sisa_kursi', '>', 0)->Where('status', '=','0')->paginate(10);
         $buses = Bus::get();
         return view('customer.index', ['schedules' => $schedules, 'layout' => 'allSchedules', 'buses' => $buses]);
+    }
+
+    public function institusi(Request $request)
+    {
+        $source = ucfirst($request->source);
+        $dest = ucfirst($request->destination);
+        $date = $request->travel_date;
+
+        $buses = Bus::all();
+        $stations = Station::all();
+
+        $schedules = DB::table('bus_schedules')
+            ->Where('pickup_address', $source)
+            ->Where('depart_date', '=', $date)
+            // ->orWhere('source', 'like', '%' . Input::get('source') . '%')
+            ->Where('dropoff_address', $dest)
+            ->Where('status', '=','1')
+            ->paginate(10);
+
+        return view('customer.index', compact('stations'), ['schedules' => $schedules, 'layout' => 'institusi', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
     }
 }

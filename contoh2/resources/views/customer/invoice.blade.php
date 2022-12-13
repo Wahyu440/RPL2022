@@ -139,8 +139,15 @@
             <tr class="bg-blue">
                 <th>Booking ID</th>
                 <th>Nama Bus</th>
+                
+                @if ($busschedule->status == '0')
                 <th>Harga per Kursi</th>
                 <th>Jumlah Kursi</th>
+                @elseif ($busschedule->status == '1')
+                <th>Jumlah Bus</th>
+                <th>Harga per Kursi</th>
+                <th>Jumlah Kursi</th>
+                @endif
                 <th>Total Harga</th>
             </tr>
         </thead>
@@ -150,12 +157,22 @@
                 <td>
                 {{ $bus->bus_name }}
                 </td>
+                @if ($busschedule->status == '0')
                 <td width="10%">Rp{{ $busschedule->price }}</td>
                 <td width="10%">{{ $booking->pesan_kursi }}</td>
+                @elseif ($busschedule->status == '1')
+                <td width="10%">{{ $booking->jumlah_bus }}</td>
+                <td width="10%">Rp{{ $busschedule->price }}</td>
+                <td width="10%">{{ $booking->pesan_kursi }}</td>
+                @endif
                 <td width="15%" class="fw-bold">Rp{{ $booking->total_price }}</td>
             </tr>
             <tr>
+                @if ($busschedule->status == '0')
                 <td colspan="4" class="total-heading">Total Pembayaran :</td>
+                @elseif ($busschedule->status == '1')
+                <td colspan="5" class="total-heading">Total Pembayaran :</td>
+                @endif
                 <td colspan="1" class="total-heading">Rp{{ $booking->total_price }}</td>
             </tr>
         </tbody>

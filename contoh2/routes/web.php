@@ -41,6 +41,10 @@ Route::prefix('home')->group(function(){
 
 });
 
+Route::get('/home/institusi', 'HomeController@institusi')->name('institusi');
+Route::get('/home/booking/institusi/{schedule_id}', 'BookingController@createInstitusi')->name('ticket.booking');
+Route::post('/home/booking/institusi/{schedule_id}', 'BookingController@storeInstitusi')->name('ticket.booking.submit');
+
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

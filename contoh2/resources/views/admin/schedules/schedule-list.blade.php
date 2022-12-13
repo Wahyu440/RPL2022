@@ -34,7 +34,7 @@
                         {{-- <th>Return Time</th>
                         <th>Booked Date</th> --}}
                         {{-- <th>Price Amount</th> --}}
-                        <th>Status</th>
+                        <th>Jenis</th>
                         <th>Action</th>
                       </thead>
                     <tbody>
@@ -57,9 +57,9 @@
                         <td>{{ $schedule->created_at }}</td> --}}
                         {{-- <td>{{ $schedule->price }}</td> --}}
                         <td>@if($schedule->status == 1)
-                          Booked
+                          Institusi
                         @else
-                          Pending...
+                          Pribadi
                         @endif
                         </td>
                         <td>

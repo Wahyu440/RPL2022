@@ -13,6 +13,7 @@
                 <th scope="col" class="text-center">Penjemputan</th>
                 <th scope="col" class="text-center">Tujuan</th>
                 <th scope="col" class="text-center">Jumlah Kursi</th>
+                <th scope="col" class="text-center">Jumlah Bus</th>
                 <th scope="col" class="text-center">Total Harga</th>
                 <th scope="col" class="text-center"></th>
             </tr> 
@@ -32,6 +33,7 @@
                 <td class="text-center">{{$booking->source}}</td>
                 <td class="text-center">{{$booking->destination}}</td>
                 <td class="text-center">{{$booking->pesan_kursi}}</td>
+                <td class="text-center">{{$booking->jumlah_bus}}</td>
                 <td class="text-center">{{ $booking->total_price }}</td>
                 <td class="text-center"> 
                     <div class="row">
