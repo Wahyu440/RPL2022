@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2022 at 06:03 PM
+-- Generation Time: Dec 30, 2022 at 03:16 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -61,7 +61,10 @@ CREATE TABLE `bookings` (
   `source` varchar(191) NOT NULL,
   `destination` varchar(191) NOT NULL,
   `total_price` int(11) NOT NULL,
+  `jumlah_bus` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
+  `bukti` varchar(100) DEFAULT NULL,
+  `validasi` int(11) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -70,9 +73,10 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`booking_id`, `customer_id`, `bus_id`, `pid`, `schedule_id`, `pesan_kursi`, `source`, `destination`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
-(32, 2, 7, 'c3R9hwUZom', 9, 8, 'Yogyakarta', 'Jakarta', 640000, 0, '2022-12-10 06:30:53', '2022-12-10 06:30:53'),
-(33, 2, 7, 'L1qa2IgQEA', 9, 8, 'Yogyakarta', 'Jakarta', 640000, 0, '2022-12-10 06:31:30', '2022-12-10 06:31:30');
+INSERT INTO `bookings` (`booking_id`, `customer_id`, `bus_id`, `pid`, `schedule_id`, `pesan_kursi`, `source`, `destination`, `total_price`, `jumlah_bus`, `status`, `bukti`, `validasi`, `created_at`, `updated_at`) VALUES
+(47, 6, 7, 'NRsByaJxgy', 9, 4, 'Yogyakarta', 'Jakarta', 320000, 1, 0, 'D1VDNtzgSj605YR9GWJY', 1, '2022-12-18 14:32:35', '2022-12-30 06:58:07'),
+(48, 6, 9, 'sRlNeoBazy', 11, 64, 'Yogyakarta', 'Solo', 4480000, 2, 0, NULL, 0, '2022-12-30 01:11:02', '2022-12-30 01:11:02'),
+(49, 6, 7, 'btsBEjZkAo', 9, 5, 'Yogyakarta', 'Jakarta', 400000, 1, 0, NULL, 0, '2022-12-30 06:19:49', '2022-12-30 06:19:49');
 
 -- --------------------------------------------------------
 
@@ -132,7 +136,9 @@ CREATE TABLE `bus_schedules` (
 --
 
 INSERT INTO `bus_schedules` (`schedule_id`, `bus_id`, `depart_date`, `return_date`, `depart_time`, `return_time`, `pickup_address`, `dropoff_address`, `stations`, `price`, `sisa_kursi`, `status`, `created_at`, `updated_at`) VALUES
-(9, 7, '2022-12-17', '2022-12-24', '19:00:00', '19:00:00', 'Yogyakarta', 'Jakarta', '\"Yogyakarta\"', '80000', 8, 0, '2022-12-10 06:30:41', '2022-12-10 06:31:30');
+(9, 7, '2022-12-17', '2022-12-24', '19:00:00', '19:00:00', 'Yogyakarta', 'Jakarta', '\"Yogyakarta\"', '80000', 15, 0, '2022-12-10 06:30:41', '2022-12-30 06:19:49'),
+(11, 9, '2022-12-20', '2022-12-27', '12:00:00', '12:00:00', 'Yogyakarta', 'Solo', '\"Yogyakarta\"', '70000', 0, 1, '2022-12-12 09:52:09', '2022-12-30 01:11:02'),
+(12, 7, '2022-12-29', '2022-12-30', '22:46:00', '23:46:00', 'Sleman', 'Jakarta', '\"Sleman\"', '70000', 24, 0, '2022-12-28 07:46:47', '2022-12-28 07:46:47');
 
 -- --------------------------------------------------------
 
@@ -148,6 +154,30 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `managers`
+--
+
+CREATE TABLE `managers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `managers`
+--
+
+INSERT INTO `managers` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'siwai', 'siwai@gmail.com', NULL, '$2y$10$.f6PQPsfHrjQASep1ZgFjuBIlnycJjmmfQ1dbCC5gFzQHoSD.wYe2', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -292,7 +322,8 @@ CREATE TABLE `stations` (
 INSERT INTO `stations` (`id`, `name`, `jenis_area`, `created_at`, `updated_at`) VALUES
 (4, 'Yogyakarta', 'Dalam Kota', '2022-11-21 22:23:22', '2022-11-21 22:23:22'),
 (5, 'Jakarta', 'Luar Kota', '2022-11-21 22:23:33', '2022-11-21 22:23:33'),
-(6, 'Solo', 'Luar Kota', '2022-11-28 23:44:53', '2022-11-28 23:44:53');
+(6, 'Solo', 'Luar Kota', '2022-11-28 23:44:53', '2022-11-28 23:44:53'),
+(7, 'Sleman', 'Dalam Kota', '2022-12-28 07:46:09', '2022-12-28 07:46:09');
 
 -- --------------------------------------------------------
 
@@ -319,8 +350,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'wai', 'siwai', 'siwai@gmail.com', NULL, '$2y$10$.f6PQPsfHrjQASep1ZgFjuBIlnycJjmmfQ1dbCC5gFzQHoSD.wYe2', '08262874029', 'slemannnnnnnnnnnnnnnnn', NULL, '2022-11-15 02:51:37', '2022-11-15 02:51:37'),
-(2, 'redrum', 'murder', 'redrum@gmail.com', NULL, '$2y$10$m0VKNMTm/IChm211Kr264eHMd/t.IR5HhV7rp.pEfJN6sY3BeOwBm', '081226769729', 'babarsaribabarsaribabarsaribabarsaribabarsari', NULL, '2022-12-09 04:50:22', '2022-12-09 04:50:22');
+(6, 'Wahyu', 'Vivacious', 'vivan.vivacious5@gmail.com', '2022-12-18 14:12:31', '$2y$10$/6pDsP7yVpUOlzv48ihbouyzcAU09b3Diel80hq18jqcoyW2H.c6y', '081226769729', 'Komplek Yadara Blok V No 38, Babarsari', NULL, '2022-12-18 14:11:28', '2022-12-18 14:12:31');
 
 --
 -- Indexes for dumped tables
@@ -356,6 +386,13 @@ ALTER TABLE `bus_schedules`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `managers`
+--
+ALTER TABLE `managers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `managers_email_unique` (`email`);
 
 --
 -- Indexes for table `migrations`
@@ -430,7 +467,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `booking_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `buses`
@@ -442,13 +479,19 @@ ALTER TABLE `buses`
 -- AUTO_INCREMENT for table `bus_schedules`
 --
 ALTER TABLE `bus_schedules`
-  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `schedule_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `managers`
+--
+ALTER TABLE `managers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -472,13 +515,13 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `stations`
 --
 ALTER TABLE `stations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

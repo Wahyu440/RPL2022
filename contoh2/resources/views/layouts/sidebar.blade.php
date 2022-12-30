@@ -31,6 +31,12 @@
           <p>Region</p>
         </a>
       </li>
+      <li class="nav-item {{ request()->routeIs('order.index') ? 'active' : '' }}">
+        <a class="nav-link rounded-0 p-2" href="{{route('order.index')}}">
+          <i style="color:#ecd7ff;" class="material-icons">check</i>
+          <p>Validation</p>
+        </a>
+      </li>
       <!-- <li class="nav-item ">
         <a class="nav-link" href="{{ route('admin.register') }}">
           {{-- <i class="material-icons">person</i> --}}

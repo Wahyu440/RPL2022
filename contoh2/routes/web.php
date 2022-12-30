@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LandingPageController@index');
+Route::post('/enquiry', 'LandingPageController@enquiry');
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
@@ -35,6 +35,8 @@ Route::prefix('home')->group(function(){
     Route::get('/booking/{booking_id}/delete', 'BookingController@destroy')->name('booking.delete');
     Route::get('/booking/{booking_id}/view', 'BookingController@viewinvoice');
     Route::get('/booking/{booking_id}/download', 'BookingController@downloadinvoice');
+    Route::get('/booking/{booking_id}/upload', 'BookingController@upload');
+    Route::get('/booking/{booking_id}/upload/{url}', 'BookingController@postupload');
 
     Route::get('booking/success/{booking_id}', 'BookingController@success')->name('success');
     Route::get('booking/failed/{booking_id}', 'BookingController@failure')->name('failure');
@@ -60,6 +62,10 @@ Route::prefix('admin')->group(function(){
     Route::Resource('bus', 'BusController');
     // Route BusSchedule
     Route::Resource('bus-schedule', 'BusScheduleController');
+    // Route Booking
+    Route::Resource('order', 'OrderController');
+    Route::get('/booking/{booking_id}/view', 'OrderController@viewinvoice');
+    Route::get('/validasi/{booking_id}', 'OrderController@validasi');
 
     // Route::get('/showRegion', ['as'=>'showRegion', 'uses'=>'BusScheduleController@showRegion']);
     // Route::get('/showOperator', ['as'=>'showOperator', 'uses'=>'BusScheduleController@showOperator']);
@@ -69,5 +75,20 @@ Route::prefix('admin')->group(function(){
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
     Route::get('/password/reset/{{ token }}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+
+});
+
+Route::prefix('manager')->group(function(){
+    Route::get('/login', 'Auth\ManagerLoginController@showLoginForm')->name('manager.login');
+    Route::post('/login', 'Auth\ManagerLoginController@login')->name('manager.login.submit');
+    Route::get('/', 'ManagerController@index')->name('manager.dashboard');
+    Route::get('/logout', 'Auth\ManagerLoginController@logout')->name('manager.logout');
+
+    // Station Route
+    Route::Resource('stationManager', 'StationController');
+    // Bus Route
+    Route::Resource('busManager', 'BusController');
+    // Route BusSchedule
+    Route::Resource('bus-scheduleManager', 'BusScheduleController');
 
 });

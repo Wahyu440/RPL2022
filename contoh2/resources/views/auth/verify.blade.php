@@ -20,6 +20,8 @@
                         @csrf
                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                     </form>
+                    <br>
+                    <a class="btn btn-warning a-btn-slide-text pull-right" href="/users/logout">Back</a>
                 </div>
             </div>
         </div>

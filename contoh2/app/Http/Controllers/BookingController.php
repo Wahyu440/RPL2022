@@ -394,4 +394,67 @@ class BookingController extends Controller
         return $pdf->download('invoice'.'-'.$todayDate.'.pdf');
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request, $id)
+    {
+        // $bookings = Booking::all();
+        // $buses = Bus::all();
+        $booking = Booking::find($id);
+
+        // $this->validate($request, [
+        //     'seats_booked'  =>  'required',
+        //     'source'        =>  'required',
+        //     'destination'   =>  'required',
+        //     // 'status'        =>  'required',
+        // ]);
+
+        // $schedule = DB::table('bus_schedules')->where('schedule_id', '=', $booking->schedule_id)->first();
+        // $bus = DB::table('buses')->where('bus_id', '=', $booking->bus_id)->first();
+
+        // $pid = $this->getPid();
+        
+        // // if(in_array(ucfirst($request->source), ucfirst($request->destination), array($bus->stations))){
+        //     $booking->customer_id = Auth::user()->id;
+        //     $booking->bus_id    =   $schedule->bus_id;
+        //     $booking->pid   = $pid;
+        //     $booking->schedule_id    =   $schedule->schedule_id;
+        //     $booking->total_price = $schedule->price * count($request->seats_booked);
+        //     $booking->seats_booked = $request->seats_booked;
+        //     $booking->source = $request->source;
+        //     $booking->destination = $request->destination;
+    
+        //     if(isset($request->status)){
+        //         $booking->status = 1;
+        //     }else{
+        //         $booking->status = 0;
+        //     }
+
+            // DB::table('bookings')->where('booking_id', $booking->booking_id)->update(['bukti' => "AFrHW1QRsWxmu5ZLU2qg"]);
+            // $booking->save();
+
+            // Session::flash('success', 'Sudah Upload Bukti Bayar');
+
+            // dd($booking);
+            return view('customer.uploadpayment',['booking'=>$booking]);
+
+        // }else{
+            // Session::flash('error', 'Please Check Your Source or Destination Address');
+            // return redirect(route('booking.index'));
+        // }
+    }
+
+    public function postupload($id, $url)
+    {
+        $order = Booking::find($id);
+        $order->bukti = $url;
+        $order->save();
+
+        return redirect('/home/booking');
+    }
 }

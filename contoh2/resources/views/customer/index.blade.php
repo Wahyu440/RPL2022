@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 {{-- <label for="source">Source</label> --}}
                                 <select name="source" id="source" class="form-control" required>
-                                        <option value="" selected="true" disabled="true">Select Departure</option>
+                                        <option value="{{ $currentUserInfo->cityName }}" selected="true">{{ $currentUserInfo->cityName }}</option>
                                         @foreach ($stations as $list)
                                             <option value="{{$list->name}}">{{$list->name}}</option>
                                         @endforeach
@@ -151,7 +151,7 @@
                                 <label for="source">Source</label>
                                 
                                 <select name="source" id="source" class="form-control" required>
-                                        <option value="" selected="true" disabled="true">Select Departure</option>
+                                <option value="{{ $currentUserInfo->cityName }}" selected="true" disabled="true">{{ $currentUserInfo->cityName }}</option>
                                         @foreach ($stations as $list)
                                             <option value="{{$list->name}}">{{$list->name}}</option>
                                         @endforeach

@@ -9,6 +9,7 @@ use App\Booking;
 use App\Station;
 use DB;
 use Auth;
+use Stevebauman\Location\Facades\Location;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     /**
@@ -27,14 +28,25 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $ip = $request->ip();
+        /*Dynamic IP address */
+        // $ip = '36.75.182.0';
+        /* Static IP address */
+        $currentUserInfo = Location::get('https://'.$ip);
         $stations = Station::all();
-        return view('customer.index', compact('stations'), ['layout' => 'index'], ['cek' => 'customer']);
+        return view('customer.index', compact('stations','currentUserInfo'), ['layout' => 'index'], ['cek' => 'customer']);
     }
 
     public function enquiry(Request $request)
     {
+        $ip = $request->ip();
+        /*Dynamic IP address */
+        $ip = '36.75.182.0';
+        /* Static IP address */
+        $currentUserInfo = Location::get('https://'.$ip);
+
         $source = ucfirst($request->source);
         $dest = ucfirst($request->destination);
         $date = $request->travel_date;
@@ -51,7 +63,7 @@ class HomeController extends Controller
             ->where('sisa_kursi', '>', 0)
             ->paginate(10);
 
-        return view('customer.index', compact('stations'), ['schedules' => $schedules, 'layout' => 'schedules', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
+        return view('customer.index', compact('stations','currentUserInfo'), ['schedules' => $schedules, 'layout' => 'schedules', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
     }
 
     public function showall(Request $request)
@@ -63,6 +75,11 @@ class HomeController extends Controller
 
     public function institusi(Request $request)
     {
+        $ip = $request->ip();
+        /*Dynamic IP address */
+        $ip = '36.75.182.0';
+        /* Static IP address */
+        $currentUserInfo = Location::get('https://'.$ip);
         $source = ucfirst($request->source);
         $dest = ucfirst($request->destination);
         $date = $request->travel_date;
@@ -78,6 +95,6 @@ class HomeController extends Controller
             ->Where('status', '=','1')
             ->paginate(10);
 
-        return view('customer.index', compact('stations'), ['schedules' => $schedules, 'layout' => 'institusi', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
+        return view('customer.index', compact('stations','currentUserInfo'), ['schedules' => $schedules, 'layout' => 'institusi', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
     }
 }

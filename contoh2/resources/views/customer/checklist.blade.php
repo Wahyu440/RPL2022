@@ -37,8 +37,8 @@
                 <td class="text-center">{{ $booking->total_price }}</td>
                 <td class="text-center"> 
                     <div class="row">
-                        <div class="col-md-2">
-                            <form action="https://uat.esewa.com.np/epay/main" method="POST">
+                        <div class="col-md-4">
+                            <!-- <form action="https://uat.esewa.com.np/epay/main" method="POST">
                                 <input value="{{ $booking->total_price }}" name="tAmt" type="hidden">
                                 <input value="{{ $booking->total_price }}" name="amt" type="hidden">
                                 <input value="0" name="txAmt" type="hidden">
@@ -49,12 +49,13 @@
                                 <input value="{{ 'http://localhost:8000/home/booking/success'.'/$booking->booking_id?q=su' }}" type="hidden" name="su">
                                 <input value="{{ 'http://localhost:8000/home/booking/failed'.'/$booking->booking_id?q=fu' }}" type="hidden" name="fu">
                                 <button type="submit" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-usd"></i></button>
-                            </form>
+                            </form> -->
+                            <a href="/home/booking/{{ $booking->booking_id }}/upload" class="btn btn-sm btn-primary text-white"><i class="glyphicon glyphicon-usd"></i> Upload Pembayaran</a>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                            <a href="/home/booking/{{ $booking->booking_id }}/view" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i> Invoice</a>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                            <a href="/home/booking/{{ $booking->booking_id }}/download" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-arrow-down"></i> Download</a>
                         </div>
                         <!-- <div class="col-md-2">
