@@ -7,12 +7,6 @@
           <p>Dashboard</p>
         </a>
       </li>
-      <!-- <li class="nav-item ">
-      <a class="nav-link" href="#">
-          {{-- <i class="material-icons">content_paste</i> --}}
-          <p>Bookings</p>
-        </a>
-      </li> -->
       <li class="nav-item {{ request()->routeIs('bus.index') ? 'active' : '' }}">
         <a class="nav-link rounded-0 p-2" href="{{route('bus.index')}}">
           <i class="material-icons" style="color:#ecd7ff;">airport_shuttle</i>
@@ -37,12 +31,6 @@
           <p>Validation</p>
         </a>
       </li>
-      <!-- <li class="nav-item ">
-        <a class="nav-link" href="{{ route('admin.register') }}">
-          {{-- <i class="material-icons">person</i> --}}
-          <p>Register New Admin</p>
-        </a>
-      </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link rounded-0 p-2" href="{{ route('admin.logout') }}"
         onclick="event.preventDefault();

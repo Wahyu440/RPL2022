@@ -31,9 +31,9 @@ class ManagerLoginController extends Controller
             'password'  =>  $request->password,
         ];
         
-        if(Auth::guard('managers')->attempt($credentials, $request->remember))
+        if(Auth::guard('manager')->attempt($credentials, $request->remember))
         {
-            return redirect()->intended(route('managers.dashboard'));
+            return redirect()->intended(route('manager.dashboard'));
         }
 
         return redirect()->back()->withInput($request->only('email'));
@@ -41,7 +41,7 @@ class ManagerLoginController extends Controller
 
     public function logout()
     {
-        Auth::guard('managers')->logout();
+        Auth::guard('manager')->logout();
         return redirect('/');
     }
 }

@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -87,8 +87,8 @@ Route::prefix('manager')->group(function(){
     // Station Route
     Route::Resource('stationManager', 'StationController');
     // Bus Route
-    Route::Resource('busManager', 'BusController');
+    Route::Resource('busManager', 'BusMController');
     // Route BusSchedule
-    Route::Resource('bus-scheduleManager', 'BusScheduleController');
+    Route::Resource('bus-scheduleManager', 'BusScheduleMController');
 
 });

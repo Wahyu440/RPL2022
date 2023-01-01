@@ -53,7 +53,7 @@ class BusController extends Controller
             'seats'   =>  'nullable',
             'pabrik'       =>  'required',
             'jenis'       =>  'required',
-            // 'seats_booked'  =>  'nullable',
+            
             'plat_no'       =>  'required',
             'bus_image' => 'image|nullable|max:2048',
         ]);

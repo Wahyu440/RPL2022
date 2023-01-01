@@ -42,14 +42,8 @@
                           <a href="#" data-toggle="modal" data-target="#stationView{{$station->id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
                           <i class="glyphicon glyphicon-plus"></i>View</a>
                           
-                          @include('admin.stations.station-view')
-                          {{-- <a href="/admin/station/{{ $station->id }}/edit" class="btn btn-sm btn-info">Edit</a> --}}
-                            <a href="#" data-toggle="modal" data-target="#editStation{{ $station->id }}" 
-                              data-toggle="tooltip" type="button" class="btn btn-sm btn-info">
-                              <i class="glyphicon glyphicon-eye"></i> Edit
-                            </a>
-                            @include('admin.stations.edit-station')
-                          <form action="{{ url('/admin/station', ['id' => $station->id]) }}" method="post">
+                          @include('manager.stations.station-view')
+                          <form action="{{ url('/manager/station', ['id' => $station->id]) }}" method="post">
                             <input class="btn btn-sm btn-danger" type="submit" value="Delete" />
                             <input type="hidden" name="_method" value="delete" />
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -68,5 +62,5 @@
             </div>
             </div>
             </div>
-            @include('admin.stations.add-station')
+
 @endsection

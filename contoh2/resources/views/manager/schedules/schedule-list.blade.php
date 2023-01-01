@@ -65,9 +65,8 @@
                         <td>
                           <a href="#" data-toggle="modal" data-target="#scheduleView{{$schedule->schedule_id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
                           <i class="glyphicon glyphicon-plus"></i>View</a>
-                  @include('admin.schedules.schedule-view')
-                          <a href="/admin/bus-schedule/{{$schedule->schedule_id}}/edit" class="btn btn-sm btn-info">Edit</a>
-                          <form action="{{ url('/admin/bus-schedule', ['id' => $schedule->schedule_id]) }}" method="post">
+                  @include('manager.schedules.schedule-view')
+                          <form action="{{ url('/manager/bus-schedule', ['id' => $schedule->schedule_id]) }}" method="post">
                             <input class="btn btn-sm btn-danger" type="submit" value="Delete" />
                             <input type="hidden" name="_method" value="delete" />
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,5 +85,5 @@
             </div>
             </div>
             </div>
-            @include('admin.schedules.add-schedule')
+
 @endsection

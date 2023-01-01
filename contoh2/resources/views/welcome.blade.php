@@ -50,21 +50,9 @@
         <a class="navbar-brand" href="#">Buslightyear</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <!-- <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul> -->
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/admin/login">Login Admin</a></li>
-          <li><a href="#">Login Manager</a></li>
-          <!-- @if ($currentUserInfo)
-                            <li class="nav-item">
-                                <a class="nav-link active scrollTo" aria-current="page" href="#">Lokasi Anda :
-                                    {{ $currentUserInfo->cityName }}</a>
-                            </li>
-                            @endif -->
+          <li><a href="/manager/login">Login Manager</a></li>
         </ul>
       </div>
     </div>
