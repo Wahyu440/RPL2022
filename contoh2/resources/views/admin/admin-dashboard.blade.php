@@ -14,8 +14,8 @@
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <div class="numbers" style="font-size: x-large;">
-                                    <p class="card-category">Total Bus Tersedia</p>
-                                    <p class="card-title">{{ $available->count() }}<p>
+                                    <p class="card-category">Total Jadwal Dalam Kota</p>
+                                    <p class="card-title">{{ $dalam->count() }}<p>
                                 </div>
                             </div>
                         </div>
@@ -29,8 +29,8 @@
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <div class="numbers" style="font-size: x-large;">
-                                    <p class="card-category">Total Bus Tidak Tersedia</p>
-                                    <p class="card-title">{{ $notAvailable->count() }}<p>
+                                    <p class="card-category">Total Jadwal Luar Kota</p>
+                                    <p class="card-title">{{ $luar->count() }}<p>
                                 </div>
                             </div>
                         </div>

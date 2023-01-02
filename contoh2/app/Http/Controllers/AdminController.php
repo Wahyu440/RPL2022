@@ -28,9 +28,13 @@ class AdminController extends Controller
     public function index()
     {
         //BUS
-        $buses = Bus::all();
-        $available = $buses->where('status', 1);
-        $notAvailable = $buses->where('status', 0);
+        // $buses = Bus::all();
+        // $available = $buses->where('status', 1);
+        // $notAvailable = $buses->where('status', 0);
+
+        $jadwal = BusSchedule::all();
+        $dalam = BusSchedule::whereColumn('pickup_address', '=', 'dropoff_address');
+        $luar = BusSchedule::whereColumn('pickup_address', '!=', 'dropoff_address');
 
         //Pemesanan
         $book = Booking::all();
@@ -41,6 +45,6 @@ class AdminController extends Controller
         //Region
         $reg   = Station::all();
 
-        return view('admin.admin-dashboard', compact('available','notAvailable','book','reg','perKota'));
+        return view('admin.admin-dashboard', compact('dalam','luar','book','reg','perKota'));
     }
 }

@@ -1,17 +1,17 @@
-@extends('layouts.header')
+@extends('layouts.headerManager')
 @section('content') 
-@include('admin.message')
+@include('manager.message')
 <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-            <span class="pull-center">
+            <!-- <span class="pull-center">
             <a href="#" data-toggle="modal" data-target="#addStation" 
             data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
             <i class="glyphicon glyphicon-plus"></i> Add New Region</a>
-            </span>
-            <br>
-            <br>
+            </span> -->
+            <!-- <br>
+            <br> -->
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title ">Region List</h4>
@@ -27,7 +27,7 @@
                     <th>Region Name</th>
                     <th>Region Type</th>
                     <th>Last Updated</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                     </thead>
                     <tbody>
                     @foreach ( $stations as $key => $station )
@@ -38,17 +38,7 @@
                             {{$station->id}}"data-toggle="tooltip">{{ $station->name }}</a></td>
                         <td>{{ $station->jenis_area }}</td>
                         <td>{{ $station->updated_at }}</td>
-                        <td>
-                          <a href="#" data-toggle="modal" data-target="#stationView{{$station->id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
-                          <i class="glyphicon glyphicon-plus"></i>View</a>
-                          
-                          @include('manager.stations.station-view')
-                          <form action="{{ url('/manager/station', ['id' => $station->id]) }}" method="post">
-                            <input class="btn btn-sm btn-danger" type="submit" value="Delete" />
-                            <input type="hidden" name="_method" value="delete" />
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          </form>
-                        </td>
+                        
                       </tr>
                     @endforeach
                 </tbody>

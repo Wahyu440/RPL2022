@@ -33,7 +33,7 @@ class LandingPageController extends Controller
 
         $buses = Bus::all();
         $stations = Station::all();
-        $schedules = DB::table('bus_schedules')->Where('status', '=','0')->where('sisa_kursi', '>', 0)->paginate(10);
+        $schedules = DB::table('bus_schedules')->Where('status', '=','0')->where('sisa_kursi', '>', 0)->where('pickup_address', '=', $currentUserInfo->cityName)->paginate(10);
         return view('welcome',compact('stations','currentUserInfo'),['schedules' => $schedules, 'layout' => 'schedules', 'buses' => $buses, 'source' => $source, 'dest' => $dest, 'date' => $date]);
     }
 

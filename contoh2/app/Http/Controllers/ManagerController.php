@@ -25,22 +25,147 @@ class ManagerController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $rute = $request->rute;
+        $harian = $request->harian;
+        $area = $request->area;
         //BUS
-        $buses = Bus::all();
-        $available = $buses->where('status', 1);
-        $notAvailable = $buses->where('status', 0);
+        $jadwal = BusSchedule::all();
+        // $hari = BusSchedule::where('created_at', '=', $harian);
+        $jadwalrute = BusSchedule::where('schedule_id', '=', $rute);
+        $dalam = BusSchedule::whereColumn('pickup_address', '=', 'dropoff_address');
+        $luar = BusSchedule::whereColumn('pickup_address', '!=', 'dropoff_address');
+
 
         //Pemesanan
         $book = Booking::all();
         
+        // $perKotaDash = DB::table('BusSchedule')
+        //          ->select('schedule_id', DB::raw('count(*) as total'))
+        //          ->groupBy('source')
+        //          ->get();
+
+       
+        $perKota =  Booking::where('schedule_id', $rute);
+        $perHari =  Booking::whereDate('created_at', $harian);
+        $perArea =  Booking::where('source', $area)->where('status',1);
+        
+        
         // for()
-        $perKota = $book->where('source', ['Station']);
+        // $perKota = Booking::where('schedule_id', ['Booking']);
 
         //Region
         $reg   = Station::all();
 
-        return view('manager.manager-dashboard', compact('available','notAvailable','book','reg','perKota'));
+        return view('manager.manager-dashboard', compact('dalam','luar','book','reg','perKota','perArea','jadwal','jadwalrute','perHari'));
+    }
+
+    public function enquiry(Request $request)
+    {
+        $rute = $request->rute;
+        $harian = $request->harian;
+        $area = $request->area;
+        //BUS
+        $jadwal = BusSchedule::all();
+        // $hari = BusSchedule::where('created_at', '=', $harian);
+        $jadwalrute = BusSchedule::where('schedule_id', '=', $rute);
+        $dalam = BusSchedule::whereColumn('pickup_address', '=', 'dropoff_address');
+        $luar = BusSchedule::whereColumn('pickup_address', '!=', 'dropoff_address');
+
+
+        //Pemesanan
+        $book = Booking::all();
+        
+        // $perKotaDash = DB::table('BusSchedule')
+        //          ->select('schedule_id', DB::raw('count(*) as total'))
+        //          ->groupBy('source')
+        //          ->get();
+
+       
+        $perKota =  Booking::where('schedule_id', $rute);
+        $perHari =  Booking::whereDate('created_at', $harian);
+        $perArea =  Booking::where('source', $area)->where('status',1);
+        
+        
+        // for()
+        // $perKota = Booking::where('schedule_id', ['Booking']);
+
+        //Region
+        $reg   = Station::all();
+
+        return view('manager.manager-dashboard', compact('dalam','luar','book','reg','perKota','perArea','jadwal','jadwalrute','perHari'));
+    }
+
+    public function harian(Request $request)
+    {
+        $rute = $request->rute;
+        $harian = $request->harian;
+        $area = $request->area;
+        //BUS
+        $jadwal = BusSchedule::all();
+        // $hari = BusSchedule::where('created_at', '=', $harian);
+        $jadwalrute = BusSchedule::where('schedule_id', '=', $rute);
+        $dalam = BusSchedule::whereColumn('pickup_address', '=', 'dropoff_address');
+        $luar = BusSchedule::whereColumn('pickup_address', '!=', 'dropoff_address');
+
+
+        //Pemesanan
+        $book = Booking::all();
+        
+        // $perKotaDash = DB::table('BusSchedule')
+        //          ->select('schedule_id', DB::raw('count(*) as total'))
+        //          ->groupBy('source')
+        //          ->get();
+
+       
+        $perKota =  Booking::where('schedule_id', $rute);
+        $perHari =  Booking::whereDate('created_at', $harian);
+        $perArea =  Booking::where('source', $area)->where('status',1);
+        
+        
+        // for()
+        // $perKota = Booking::where('schedule_id', ['Booking']);
+
+        //Region
+        $reg   = Station::all();
+
+        return view('manager.manager-dashboard', compact('dalam','luar','book','reg','perKota','perArea','jadwal','jadwalrute','perHari'));
+    }
+
+    public function institusi(Request $request)
+    {
+        $rute = $request->rute;
+        $harian = $request->harian;
+        $area = $request->area;
+        //BUS
+        $jadwal = BusSchedule::all();
+        // $hari = BusSchedule::where('created_at', '=', $harian);
+        $jadwalrute = BusSchedule::where('schedule_id', '=', $rute);
+        $dalam = BusSchedule::whereColumn('pickup_address', '=', 'dropoff_address');
+        $luar = BusSchedule::whereColumn('pickup_address', '!=', 'dropoff_address');
+
+
+        //Pemesanan
+        $book = Booking::all();
+        
+        // $perKotaDash = DB::table('BusSchedule')
+        //          ->select('schedule_id', DB::raw('count(*) as total'))
+        //          ->groupBy('source')
+        //          ->get();
+
+       
+        $perKota =  Booking::where('schedule_id', $rute);
+        $perHari =  Booking::whereDate('created_at', $harian);
+        $perArea =  Booking::where('source', $area)->where('status',1);
+        
+        
+        // for()
+        // $perKota = Booking::where('schedule_id', ['Booking']);
+
+        //Region
+        $reg   = Station::all();
+
+        return view('manager.manager-dashboard', compact('dalam','luar','book','reg','perKota','perArea','jadwal','jadwalrute','perHari'));
     }
 }

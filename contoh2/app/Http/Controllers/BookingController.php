@@ -174,11 +174,7 @@ class BookingController extends Controller
                 $bookings->source = $schedule->pickup_address;
                 $bookings->destination = $schedule->dropoff_address;
         
-                if(isset($request->status)){
                     $bookings->status = 1;
-                }else{
-                    $bookings->status = 0;
-                }
                 
                 // $booked = json_decode($bus->seats, true);
                 

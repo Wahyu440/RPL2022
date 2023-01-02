@@ -19,8 +19,8 @@
             <p>Bus Schedules</p>
           </a>
         </li>
-        <li class="nav-item {{ request()->routeIs('station.index') ? 'active' : '' }}">
-        <a class="nav-link rounded-0 p-2" href="{{route('station.index')}}">
+        <li class="nav-item {{ request()->routeIs('stationManager.index') ? 'active' : '' }}">
+        <a class="nav-link rounded-0 p-2" href="{{route('stationManager.index')}}">
           <i style="color:#ecd7ff;" class="material-icons">pin_drop</i>
           <p>Region</p>
         </a>

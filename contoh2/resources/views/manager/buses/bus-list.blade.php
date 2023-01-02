@@ -1,17 +1,17 @@
-@extends('layouts.header')
+@extends('layouts.headerManager')
 @section('content') 
-@include('admin.message')
+@include('manager.message')
 <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-            <span class="pull-center">
+            <!-- <span class="pull-center">
             <a href="#" data-toggle="modal" data-target="#addBus" 
             data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
             <i class="glyphicon glyphicon-plus"></i> Add New Bus</a>
             </span>
             <br>
-            <br>
+            <br> -->
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Bus List</h4>
@@ -31,7 +31,7 @@
                     <th>Status</th>
                     <th>Pabrik</th>
                     <th>Jenis</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                     </thead>
                     <tbody>
                     @foreach ( $buses as $key => $bus )
@@ -53,23 +53,7 @@
                         </td>
                         <td>{{ $bus->pabrik }}</td>
                         <td>{{ $bus->jenis }}</td> 
-                        <td>
-                          <a href="#" data-toggle="modal" data-target="#busView{{$bus->bus_id}}" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
-                          <i class="glyphicon glyphicon-plus"></i>View</a>
-
-                        @include('manager.buses.bus-view')
-                        <a href="/manager/bus/{{ $bus->bus_id }}/edit" class="btn btn-sm btn-info">Edit</a>
-                        <!-- <a href="#" data-toggle="modal" data-target="#editBus{{ $bus->id }}" 
-                              data-toggle="tooltip" type="button" class="btn btn-sm btn-info">
-                              <i class="glyphicon glyphicon-eye"></i> Edit
-                            </a> -->
-
-                          <form action="{{ url('/manager/bus', ['id' => $bus->bus_id]) }}" method="post">
-                            <input class="btn btn-sm btn-danger" type="submit" value="Delete" />
-                            <input type="hidden" name="_method" value="delete" />
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          </form>
-                        </td>
+                        
                       </tr>
                     @endforeach
                 </tbody>

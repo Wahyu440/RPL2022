@@ -85,10 +85,13 @@ Route::prefix('manager')->group(function(){
     Route::get('/logout', 'Auth\ManagerLoginController@logout')->name('manager.logout');
 
     // Station Route
-    Route::Resource('stationManager', 'StationController');
+    Route::Resource('stationManager', 'StationMController');
     // Bus Route
     Route::Resource('busManager', 'BusMController');
     // Route BusSchedule
     Route::Resource('bus-scheduleManager', 'BusScheduleMController');
 
+    Route::post('/enquiry', 'ManagerController@enquiry')->name('manager.dashboard');
+    Route::post('/harian', 'ManagerController@harian')->name('manager.dashboard');
+    Route::post('/institusi', 'ManagerController@institusi')->name('manager.dashboard');
 });
