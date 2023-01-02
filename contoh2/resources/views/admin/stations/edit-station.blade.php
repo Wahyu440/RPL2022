@@ -5,7 +5,7 @@
     <div class="modal-content">
         <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLongTitle" align="center">
-            <i class="glyphicon glyphicon-log-in">Update Region Info</i></h2>
+            <i class="">Update Region Info</i></h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

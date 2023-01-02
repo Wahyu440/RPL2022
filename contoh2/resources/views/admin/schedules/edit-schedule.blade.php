@@ -5,7 +5,7 @@
 <div class="modal-content">
     <div class="modal-header">
     <h2 class="modal-title" id="exampleModalLongTitle" align="center">
-        <i class="glyphicon glyphicon-log-in">Update Schedule</i></h2>
+        <i class="">Update Schedule</i></h2>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -22,22 +22,19 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="customer_id">Stations</label>
-                    <div class="row">
-                        <?php
-                        // for ($i=1; $i<=count($stations) ; $i++) { ?>
-                        @foreach ($stations as $station)
-                            <div class="col-md-4">
-                                <input type="checkbox"  name="stations[]" value="{{ $station->name }}" <?php if(in_array("$station->name", (array)$schedule->stations)){echo "checked";  } ?>>{{ $station->name }}
-                            </div>
-                        @endforeach
-                    </div>
+                    <select name="bus_id" class="form-control">
+                            <option value="">Select Station</option>
+                            @foreach ($stations as $station)
+                            <option value="{{$station->id}}">{{$station->name}}</option>
+                            @endforeach
+                        </select>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                        <!-- <label for="exampleInputPassword1">Seat No</label> -->
+                        <label for="bus">Bus </label>
                         <select name="bus_id" class="form-control">
                             <option value="">Select Bus</option>
                             @foreach ($buses as $bus)
@@ -46,9 +43,9 @@
                         </select>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label for="price">Price </label>
+                    <label for="price">Price</label>
                     <input type="text" name="price" id="price" value="{{ $schedule->price }}">
                 </div>
             </div>
@@ -88,26 +85,25 @@
             <div class="row">
                 <div class="col-md-6">
                 <div class="form-group">
-                    <!-- <label for="exampleInputEmail1">Bus Name</label> -->
+                    <label for="pickup_address">Pickup Address</label>
                     <input name="pickup_address" value="{{ $schedule->pickup_address }}" class="form-control" aria-describedby="emailHelp"
                     placeholder="Enter Pickup Address" type="text">
                 </div>
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
-                    <!-- <label for="exampleInputPassword1">Seat No</label> -->
+                    <label for="dropoff_address">Dropoff Address</label>
                     <input name="dropoff_address" value="{{ $schedule->dropoff_address }}" class="form-control" 
                     placeholder="Enter Dropoff Address" type="text">
                 </div>
-                </div>
             </div>
-          <div class="col-md-3">
+            <div class="col-md-6">
           <div class="form-group">
-                <input name="status" value="{{ $schedule->status }}" aria-describedby="emailHelp" type="checkbox">
-                <label>Book</label>
+                <label for="sisa_kursi">Sisa Kursi</label>
+                <input name="sisa_kursi" value="{{ $schedule->sisa_kursi }}" class="form-control" placeholder="Sisa Kursi" type="text">
+            </div>
           </div>
-          </div>
-
+        </div>
       </fieldset>
     </div>
     <div class="modal-footer">

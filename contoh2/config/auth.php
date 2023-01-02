@@ -54,6 +54,11 @@ return [
             'driver' => 'session',
             'provider' => 'managers',
         ],
+        'manager-api' => [
+            'driver' => 'token',
+            'provider' => 'managers',
+            'hash' => false,
+        ],
 
         'admin-api' => [
             'driver' => 'token',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Manager;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -33,7 +34,7 @@ class ManagerLoginController extends Controller
         
         if(Auth::guard('manager')->attempt($credentials, $request->remember))
         {
-            return redirect()->intended(route('manager.dashboard'));
+            return redirect('/manager');
         }
 
         return redirect()->back()->withInput($request->only('email'));

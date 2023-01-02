@@ -1,13 +1,16 @@
-{{-- @include('layouts.app') --}}
+@include('layouts.app')
+@include('admin.message')
 
- <div class="modal fade" tabindex="-1" id="editBus{{ $bus->id }} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle" align="center"
-        <i class="glyphicon glyphicon-log-in">Update Bus</h2>
-        </div>
-        <div class="modal-body">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+    <h2 class="modal-title" id="exampleModalLongTitle" align="center">
+        <i class="">Update Bus</i></h2>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
 
         {!! Form::open(['action' => ['BusController@update', $bus->bus_id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
         {{ csrf_field() }}
