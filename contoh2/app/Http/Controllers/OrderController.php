@@ -31,7 +31,7 @@ class OrderController extends Controller
     
     public function index()
     {
-        $order = DB::table('bookings')->whereBetween('created_at',[Carbon::now()->startOfMonth(),Carbon::now()->endOfMonth()])->whereNotNull('bukti')->get();
+        $order = DB::table('bookings')->whereNotNull('bukti')->get();
         $buses = Bus::all();
         return view('admin.bookings.booking-list', ['booking' => $order, 'buses' => $buses]);
     }
