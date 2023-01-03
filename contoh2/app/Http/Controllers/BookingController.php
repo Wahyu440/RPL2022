@@ -30,7 +30,7 @@ class BookingController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $order = Booking::where(['customer_id' => $user])->get();
+        $order = Booking::where(['customer_id' => $user])->where('validasi',0)->get();
         $buses = Bus::all();
         return view('customer.index', ['layout' => 'checklist', 'booking' => $order, 'buses' => $buses]);
     }

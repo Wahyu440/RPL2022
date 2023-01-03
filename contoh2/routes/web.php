@@ -76,6 +76,14 @@ Route::prefix('admin')->group(function(){
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
     Route::get('/password/reset/{{ token }}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
+    Route::post('/enquiry', 'AdminController@enquiry')->name('admin.dashboard');
+    Route::post('/harian', 'AdminController@harian')->name('admin.dashboard');
+    Route::post('/institusi', 'AdminController@institusi')->name('admin.dashboard');
+
+    Route::get('/viewwaktu', 'AdminController@viewwaktu');
+    Route::get('/viewarea', 'AdminController@viewarea');
+    Route::get('/downloadwaktu', 'AdminController@downloadwaktu');
+    Route::get('/downloadarea', 'AdminController@downloadarea');
 });
 
 Route::prefix('manager')->group(function(){

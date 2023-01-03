@@ -141,15 +141,7 @@ class BusScheduleController extends Controller
     {
         $this->validate($request, 
         [
-            'bus_id'=>'required',
-            'depart_date'=>'required',
-            'return_date'=>'required',
-            'depart_time'=>'required',
-            'return_time'=>'required',
-            'pickup_address'=>'required',
-            'dropoff_address'=>'required',
-            'stations'    =>     'required',
-            'price'    =>     'required',
+            
             // 'status'=>'required'
         ]);
 

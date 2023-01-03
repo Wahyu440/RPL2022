@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Booking Bulan Ini</h4>
+                        <h4 class="card-title ">Booking Belum Divalidasi</h4>
                         <h4 class="card-title pull-right">Today is: {{ date('d-m-Y', time()) }}</h4>
                     </div>
                     <div class="card-body">

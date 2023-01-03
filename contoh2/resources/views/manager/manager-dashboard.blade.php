@@ -15,8 +15,9 @@
                         <div class="col-12 col-md-12">
                             <div class="numbers" style="font-size: x-large;">
                                 <p class="card-category">Total Jadwal Dalam Kota</p>
+                                <br>
                                 <p class="card-title">{{ $dalam->count() }}
-                                <p>
+                                
                             </div>
                         </div>
                     </div>
@@ -31,8 +32,9 @@
                         <div class="col-12 col-md-12">
                             <div class="numbers" style="font-size: x-large;">
                                 <p class="card-category">Total Jadwal Luar Kota</p>
+                                <br>
                                 <p class="card-title">{{ $luar->count() }}
-                                <p>
+                                
                             </div>
                         </div>
                     </div>
@@ -49,6 +51,7 @@
 
 
                                 <p class="card-category">Total Transaksi per Jadwal</p>
+                                <br>
                                 <p class="card-title">{{ $perKota->count() }}
 
 
@@ -68,7 +71,7 @@
                             <select name="rute" id="rute" class="form-control" required>
                                 @foreach ($jadwal as $list)
                                 <option value="{{$list->schedule_id}}">
-                                    {{$list->pickup_address}}-{{$list->dropoff_address}}</option>
+                                ({{$list->schedule_id}}) {{$list->pickup_address}}-{{$list->dropoff_address}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -118,6 +121,7 @@
 
 
                                 <p class="card-category">Total Permintaan Institusi per Kota</p>
+                                <br>
                                 <p class="card-title">{{ $perArea->count() }}
 
 
@@ -193,6 +197,7 @@
 
 
                                 <p class="card-category">Total Transaksi per Hari</p>
+                                <br>
                                 <p class="card-title">{{ $perHari->count() }}
 
 

@@ -18,7 +18,7 @@
 
     {{ csrf_field() }}
     <fieldset>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="customer_id">Stations</label>
@@ -30,13 +30,13 @@
                         </select>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                         <label for="bus">Bus </label>
                         <select name="bus_id" class="form-control">
-                            <option value="">Select Bus</option>
+                            <option value="{{ $schedule->bus_id }}">Select Bus</option>
                             @foreach ($buses as $bus)
                             <option value="{{$bus->bus_id}}">{{$bus->bus_name}}</option>
                             @endforeach
@@ -86,15 +86,27 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="pickup_address">Pickup Address</label>
-                    <input name="pickup_address" value="{{ $schedule->pickup_address }}" class="form-control" aria-describedby="emailHelp"
-                    placeholder="Enter Pickup Address" type="text">
+                    <!-- <input name="pickup_address" value="{{ $schedule->pickup_address }}" class="form-control" aria-describedby="emailHelp"
+                    placeholder="Enter Pickup Address" type="text"> -->
+                    <select name="pickup_address" class="form-control">
+                            <option value="{{ $schedule->pickup_address }}">{{ $schedule->pickup_address }}</option>
+                            @foreach ($stations as $station)
+                            <option value="{{$station->id}}">{{$station->name}}</option>
+                            @endforeach
+                        </select>
                 </div>
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="dropoff_address">Dropoff Address</label>
-                    <input name="dropoff_address" value="{{ $schedule->dropoff_address }}" class="form-control" 
-                    placeholder="Enter Dropoff Address" type="text">
+                    <!-- <input name="dropoff_address" value="{{ $schedule->dropoff_address }}" class="form-control" 
+                    placeholder="Enter Dropoff Address" type="text"> -->
+                    <select name="dropoff_address" class="form-control">
+                            <option value="{{ $schedule->dropoff_address }}">{{ $schedule->dropoff_address }}</option>
+                            @foreach ($stations as $station)
+                            <option value="{{$station->id}}">{{$station->name}}</option>
+                            @endforeach
+                        </select>
                 </div>
             </div>
             <div class="col-md-6">
