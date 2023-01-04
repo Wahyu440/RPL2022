@@ -106,7 +106,7 @@
       <form action="{{ url('/enquiry')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="source">Source</label>
+                                <label for="source">Asal Keberangkatan</label>
                                 
                                 <select name="source" id="source" class="form-control" required>
                                         <option value="{{ $currentUserInfo->cityName }}" selected="true" disabled="true">{{ $currentUserInfo->cityName }}</option>
@@ -116,7 +116,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="destination">Destination</label>
+                                <label for="destination">Tujuan Keberangkatan</label>
                                 
                                 <select name="destination" id="destination" class="form-control" required>
                                         <option value="" selected="true" disabled="true">Select Destination</option>
@@ -126,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="travel_date">Travel Date</label>
+                                <label for="travel_date">Tanggal Keberangkatan</label>
                                 <input name="travel_date" value="{{ $date }}" id="travel_date" type="date" class="form-control" placeholder="Enter Travel Date">
                             </div>
                             <input type="submit" class="btn btn-info" value="Search">
@@ -222,9 +222,8 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Tersedia Hingga 30 Hari ke Depan</h5>
-            <p class="card-text">Pilih jadwal kereta terbaik sesuai dengan kebutuhan Anda. Di sini Anda dapat menemukan
-              semua jadwal kereta untuk 90 hari ke depan, mencakup semua kelas mulai dari Ekonomi, Bisnis, hingga
-              Eksekutif.</p>
+            <p class="card-text">Pilih jadwal bus terbaik sesuai dengan kebutuhan Anda. Di sini Anda dapat menemukan
+              semua jadwal bus untuk 30 hari ke depan, mencakup semua kelas mulai dari Institusi maupun Pribadi.</p>
           </div>
         </div>
       </div>
